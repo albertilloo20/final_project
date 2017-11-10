@@ -67,18 +67,21 @@ Para comprobar que nuestro proyecto funciona, que lo hemos clonado bien y todo e
 **IMPORTANTE: una vez ejecutado el comando pull o push nos pedira a veces unas credenciales, estas credenciales son vuestro usuario y contraseña de github.**
 
 Por ejemplo a Pepo le toca hacer un formulario de registro de usuario, los pasos a seguir por Pepo serian los siguientes:
-1. Posicionarse en la rama dev, para ello usaria el siguiente comando: `git checkout dev`
 
-2.- Una vez posicionado en esta rama hara el siguiente comando para bajarse la ultima version del proyecto y trabajar a partir de ahi: 
+1. Posicionarse en la rama dev, para ello usaria el siguiente comando: 
+
+   `git checkout dev`
+
+2. Una vez posicionado en esta rama hara el siguiente comando para bajarse la ultima version del proyecto y trabajar a partir de ahi: 
 
    `git pull origin dev`
   
-3.- Una vez se ha pulleado la rama se creara una rama a partir de dev con el siguiente comando: 
+3. Una vez se ha pulleado la rama se creara una rama a partir de dev con el siguiente comando: 
 
    `git branch nombreDeLaRama` 
    
 Los nombres de las ramas los definiremos con logica para que todos sepamos que se esta haciendo en esta rama
-4.- Una vez creada la rama tendremos que acceder a ella mediante el siguiente comando git checkout nombreDeLaRama.
+4. Una vez creada la rama tendremos que acceder a ella mediante el siguiente comando git checkout nombreDeLaRama.
 En nuestra terminal nos debera aparecer lo siguiente:
   
   `teki@teki-SVE1513Y1ESI:~/Projects/final_project/AlquilaCar(nombreDeLaRama)$`
@@ -91,9 +94,9 @@ En nuestra terminal nos debera aparecer lo siguiente:
   
   **"(nombreDeLaRama)"** es la rama de GIT donde estamos trabajando.
   
-5.- Una vez realizado lo anterior Pepo desarrollaria sus cambios en el proyecto como por ejemplo añadir un formulario, cambiar un fondo, añadir un toolbar... Lo que sea.
+5. Una vez realizado lo anterior Pepo desarrollaria sus cambios en el proyecto como por ejemplo añadir un formulario, cambiar un fondo, añadir un toolbar... Lo que sea.
   
-6.- Cuando pepo haya desarrollado lo que tenia que desarrollar lo siguiente que tendra que hacer es pushear su rama, es
+6. Cuando pepo haya desarrollado lo que tenia que desarrollar lo siguiente que tendra que hacer es pushear su rama, es
 decir hasta ahora pepo habia estado trabajando en una rama que solo estaba en su ordenador, al pushear hara que esa rama 
 sea visible para todos ya que estara en remoto y de esta forma yo me podre encargar de mezclarlo con nuestro proyecto.
 Para pushear una rama hay que seguir unos pasos:
