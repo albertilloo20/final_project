@@ -80,20 +80,21 @@ Por ejemplo a Pepo le toca hacer un formulario de registro de usuario, los pasos
 
    `git branch nombreDeLaRama` 
    
-Los nombres de las ramas los definiremos con logica para que todos sepamos que se esta haciendo en esta rama
+   Los nombres de las ramas los definiremos con logica para que todos sepamos que se esta haciendo en esta rama.
+   
 4. Una vez creada la rama tendremos que acceder a ella mediante el siguiente comando git checkout nombreDeLaRama.
 En nuestra terminal nos debera aparecer lo siguiente:
   
   `teki@teki-SVE1513Y1ESI:~/Projects/final_project/AlquilaCar(nombreDeLaRama)$`
-  
-  **"teki"** sera el usuario en mi caso es teki en el vuestro sera pepo juan o como se llame vuestro usuario.
-  
-  **"SVE1513Y1ESI"** supongo que sera el hash de ese usuario(esto no tiene importancia).
-  
-  **"~/Projects/final_project/AlquilaCar"** es el directorio en donde nos encontramos.
-  
-  **"(nombreDeLaRama)"** es la rama de GIT donde estamos trabajando.
-  
+
+**"teki"** sera el usuario en mi caso es teki en el vuestro sera pepo juan o como se llame vuestro usuario.
+
+**"SVE1513Y1ESI"** supongo que sera el hash de ese usuario(esto no tiene importancia).
+
+**"~/Projects/final_project/AlquilaCar"** es el directorio en donde nos encontramos.
+
+**"(nombreDeLaRama)"** es la rama de GIT donde estamos trabajando.
+
 5. Una vez realizado lo anterior Pepo desarrollaria sus cambios en el proyecto como por ejemplo añadir un formulario, cambiar un fondo, añadir un toolbar... Lo que sea.
   
 6. Cuando pepo haya desarrollado lo que tenia que desarrollar lo siguiente que tendra que hacer es pushear su rama, es
@@ -101,13 +102,13 @@ decir hasta ahora pepo habia estado trabajando en una rama que solo estaba en su
 sea visible para todos ya que estara en remoto y de esta forma yo me podre encargar de mezclarlo con nuestro proyecto.
 Para pushear una rama hay que seguir unos pasos:
   
- 6.1- Hay que añadir todos los cambios que se han realizado en los archivos, para ello usara el siguiente comando:
+ 6.1 Hay que añadir todos los cambios que se han realizado en los archivos, para ello usara el siguiente comando:
  
  `git add .`
  
  (El caracter '.' lo que dice es que añadira todos los archivos modificados al commit que se realizara)
 
- 6.2- Una vez añadidos los cambios tiene que commitearlos (Esto se hace para que podamos volver a este punto si la 
+ 6.2 Una vez añadidos los cambios tiene que commitearlos (Esto se hace para que podamos volver a este punto si la 
  liamos) para ello pepo ejecutara el siguiente comando: 
  
  `git commit -m ''` 
@@ -118,19 +119,19 @@ Para pushear una rama hay que seguir unos pasos:
  
  este mensaje sera visible para todos y de esta forma podremos ver que funcionalidad se ha añadido en esa rama.
 
- 6.3.- Una vez realizado el commit pepo tiene que pushear esa rama para lo que usara el comando: 
+ 6.3. Una vez realizado el commit pepo tiene que pushear esa rama para lo que usara el comando: 
  
  `git push origin nombreDeLaRama` 
  
-   Una vez hecho esto y si no ha habido ningun error la rama estara disponible en remoto y ya me encargare yo de mezclarla      con  el proyecto final.
+Una vez hecho esto y si no ha habido ningun error la rama estara disponible en remoto y ya me encargare yo de mezclarla      con  el proyecto final.
 
-   **RECORDAD COSAS IMPORTANTES:**
-   
-   * Antes de sacar una nueva rama para hacer nuestra tarea hay que hacer pull para tener la version mas actualizada del
-   proyecto
-   
-   * Antes de pushear una rama primero hay que añadir cambios(add) y commitearlos (commit).
-  
+**RECORDAD COSAS IMPORTANTES:**
+
+* Antes de sacar una nueva rama para hacer nuestra tarea hay que hacer pull para tener la version mas actualizada del
+proyecto
+
+* Antes de pushear una rama primero hay que añadir cambios(add) y commitearlos (commit).
+
 ## TRELLO
   Trello es una pizarra para gestionar tareas, os recomiendo que useis esta aplicacion, de esta manera veremos que tareashay
   que hacer, que tareas se estan desarrollando y quien la esta desarrollando, ya os pasare el enlace con la pizarra de
