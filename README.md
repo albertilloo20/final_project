@@ -138,6 +138,10 @@ Por ejemplo a Pepo le toca hacer un formulario de registro de usuario, los pasos
   
   git branch -r ->nos muestra las ramas que existe en el repositorio remoto
   
+  git branch nuevaRamaQueVamosACrear -> esto se usa para crear una nueva rama a partir de la que estamos posicionados
+  despues de crear esta rama haremos el comando git checkout nuevaRamaQueCreamosAnteriormente y ya estamos posicionados
+  en nuestra nueva rama.
+  
   HAY QUE TENER MUCHO CUIDADO CON EL COMANDO PUSH SI QUEREIS LAS PRIMERAS VECES ME AVISAIS Y PUSHEAMOS JUNTOS
   NADIE TOCARA LA RAMA MASTER, Y NADIE HARA NADA EN LA RAMA DEV, lo unico que se hara en la rama dev es sacarse nuevas 
   ramas.
