@@ -82,18 +82,21 @@ Por ejemplo a Pepo le toca hacer un formulario de registro de usuario, los pasos
    
    Los nombres de las ramas los definiremos con logica para que todos sepamos que se esta haciendo en esta rama.
    
-4. Una vez creada la rama tendremos que acceder a ella mediante el siguiente comando git checkout nombreDeLaRama.
-En nuestra terminal nos debera aparecer lo siguiente:
+4. Una vez creada la rama tendremos que acceder a ella mediante el siguiente comando 
+
+   `git checkout nombreDeLaRama.`
+
+   En nuestra terminal nos debera aparecer lo siguiente:
   
-  `teki@teki-SVE1513Y1ESI:~/Projects/final_project/AlquilaCar(nombreDeLaRama)$`
+      `teki@teki-SVE1513Y1ESI:~/Projects/final_project/AlquilaCar(nombreDeLaRama)$`
 
-**"teki"** sera el usuario en mi caso es teki en el vuestro sera pepo juan o como se llame vuestro usuario.
+   **"teki"** sera el usuario en mi caso es teki en el vuestro sera pepo juan o como se llame vuestro usuario.
 
-**"SVE1513Y1ESI"** supongo que sera el hash de ese usuario(esto no tiene importancia).
+   **"SVE1513Y1ESI"** supongo que sera el hash de ese usuario(esto no tiene importancia).
 
-**"~/Projects/final_project/AlquilaCar"** es el directorio en donde nos encontramos.
+   **"~/Projects/final_project/AlquilaCar"** es el directorio en donde nos encontramos.
 
-**"(nombreDeLaRama)"** es la rama de GIT donde estamos trabajando.
+   **"(nombreDeLaRama)"** es la rama de GIT donde estamos trabajando.
 
 5. Una vez realizado lo anterior Pepo desarrollaria sus cambios en el proyecto como por ejemplo añadir un formulario, cambiar un fondo, añadir un toolbar... Lo que sea.
   
@@ -101,27 +104,17 @@ En nuestra terminal nos debera aparecer lo siguiente:
 decir hasta ahora pepo habia estado trabajando en una rama que solo estaba en su ordenador, al pushear hara que esa rama 
 sea visible para todos ya que estara en remoto y de esta forma yo me podre encargar de mezclarlo con nuestro proyecto.
 Para pushear una rama hay que seguir unos pasos:
-  
- 6.1 Hay que añadir todos los cambios que se han realizado en los archivos, para ello usara el siguiente comando:
- 
- `git add .`
- 
- (El caracter '.' lo que dice es que añadira todos los archivos modificados al commit que se realizara)
-
- 6.2 Una vez añadidos los cambios tiene que commitearlos (Esto se hace para que podamos volver a este punto si la 
- liamos) para ello pepo ejecutara el siguiente comando: 
- 
- `git commit -m ''` 
- 
- dentro de las comillas ira el mensaje que queramos poner, por ejemplo:
- 
- `git commit -m 'formulario de usuario realizado'`,
- 
- este mensaje sera visible para todos y de esta forma podremos ver que funcionalidad se ha añadido en esa rama.
-
- 6.3. Una vez realizado el commit pepo tiene que pushear esa rama para lo que usara el comando: 
- 
- `git push origin nombreDeLaRama` 
+      * 6.1 Hay que añadir todos los cambios que se han realizado en los archivos, para ello usara el siguiente comando:
+            `git add .`
+      (El caracter '.' lo que dice es que añadira todos los archivos modificados al commit que se realizara)
+      * 6.2 Una vez añadidos los cambios tiene que commitearlos (Esto se hace para que podamos volver a este punto si la 
+      liamos) para ello pepo ejecutara el siguiente comando: 
+            `git commit -m ''` 
+      dentro de las comillas ira el mensaje que queramos poner, por ejemplo:
+            `git commit -m 'formulario de usuario realizado'`,
+      este mensaje sera visible para todos y de esta forma podremos ver que funcionalidad se ha añadido en esa rama.
+      * 6.3. Una vez realizado el commit pepo tiene que pushear esa rama para lo que usara el comando: 
+            `git push origin nombreDeLaRama` 
  
 Una vez hecho esto y si no ha habido ningun error la rama estara disponible en remoto y ya me encargare yo de mezclarla      con  el proyecto final.
 
