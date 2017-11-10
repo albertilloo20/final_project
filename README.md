@@ -105,15 +105,22 @@ decir hasta ahora pepo habia estado trabajando en una rama que solo estaba en su
 sea visible para todos ya que estara en remoto y de esta forma yo me podre encargar de mezclarlo con nuestro proyecto.
 Para pushear una rama hay que seguir unos pasos:
       * 6.1 Hay que añadir todos los cambios que se han realizado en los archivos, para ello usara el siguiente comando:
+      
             `git add .`
+            
       (El caracter '.' lo que dice es que añadira todos los archivos modificados al commit que se realizara)
       * 6.2 Una vez añadidos los cambios tiene que commitearlos (Esto se hace para que podamos volver a este punto si la 
       liamos) para ello pepo ejecutara el siguiente comando: 
+      
             `git commit -m ''` 
+            
       dentro de las comillas ira el mensaje que queramos poner, por ejemplo:
+      
             `git commit -m 'formulario de usuario realizado'`,
+            
       este mensaje sera visible para todos y de esta forma podremos ver que funcionalidad se ha añadido en esa rama.
       * 6.3. Una vez realizado el commit pepo tiene que pushear esa rama para lo que usara el comando: 
+      
             `git push origin nombreDeLaRama` 
  
 Una vez hecho esto y si no ha habido ningun error la rama estara disponible en remoto y ya me encargare yo de mezclarla      con  el proyecto final.
@@ -126,56 +133,52 @@ proyecto
 * Antes de pushear una rama primero hay que añadir cambios(add) y commitearlos (commit).
 
 ## TRELLO
-  Trello es una pizarra para gestionar tareas, os recomiendo que useis esta aplicacion, de esta manera veremos que tareashay
-  que hacer, que tareas se estan desarrollando y quien la esta desarrollando, ya os pasare el enlace con la pizarra de
-  momento solo registraros, el nombre de las ramas que creemos en git deberian de ser iguales al nombre de la tarea que haya
-  creada en trello, de esta forma podemos ver el codigo de alguien que haya hecho una tarea y la haya pusheado sabiendo
-  simplemente el nombre de esa tarea.
-  
+Trello es una pizarra para gestionar tareas, os recomiendo que useis esta aplicacion, de esta manera veremos que tareas hay
+que hacer, que tareas se estan desarrollando y quien la esta desarrollando. 
+
+Ya os pasare el enlace con la pizarra de momento solo registraros, el nombre de las ramas que creemos en git deberian de ser iguales al nombre de la tarea que haya creada en trello, de esta forma podemos ver el codigo de alguien que haya hecho una tarea y la haya pusheado sabiendo simplemente el nombre de esa tarea.
+
 ## Comandos mas importantes de git
-  git checkout nombreDeLaRama -> nos lleva a la rama que queramos ir
-  
-  git checkout . -> nos borrara todos los cambios que no hayan sido commiteados (Este comando yo lo uso para cuando tengas 
-  que volver al principio de todo de esa rama que te creaste porque las cosas que quieres hacer no te salen y quieres volver
-  al estado del proyecto en el que funcionaba todo correctamente.
-  
-  git status -> nos dice en que estado estan nuestros archivos rojo significa que no estan añadidos para el commit, verde 
-  significa que ya estan añadidos y estan listos para commitear.
-  
-  git add -> añadir archivos para commitear
-  
-  git commit -m 'Mensaje a escribir' -> esto commiteara nuestros archivos (por asi decirlo es un punto de restauracion). El
-  mensaje es totalmente obligatorio y deberia describir que se ha hecho con ese commit.
-  
-  git push origin NombreDeLaRama -> sirve para poner lo que hemos realizado (nuestra rama) en remoto y que todos nosotros lo
-  podamos ver. Recordad que nunca vais a trabajar en dev o en master solo creareis ramas a partir de dev y pusheareis 
-  vuestras ramas con el nombre que le hayais dado y luego yo las mezclo con el proyecto.
-  
-  git pull origin NombreDeLaRama-> lo usaremos para traernos la rama remota de dev que sera siempre la mas actualizada, y lo
-  haremos siempre obligatoriamente antes de crearnos una nueva rama para trabajar.
-  
-  git checkout nombreDeLaRamaQueNoExisteEnNuestroRepositorioLocal -> imaginemos que pepo quiere bajarse una rama que esta en
-  remoto de algo que ha realizado juan pepo deberia usar este comando para traerse esa rama del repositorio remoto al 
-  repositorio local
-  
-  git branch -> nos muestra las ramas que tenemos en local
-  
-  git branch -r ->nos muestra las ramas que existe en el repositorio remoto
-  
-  git branch nuevaRamaQueVamosACrear -> esto se usa para crear una nueva rama a partir de la que estamos posicionados
-  despues de crear esta rama haremos el comando git checkout nuevaRamaQueCreamosAnteriormente y ya estamos posicionados
-  en nuestra nueva rama.
-  
-  HAY QUE TENER MUCHO CUIDADO CON EL COMANDO PUSH SI QUEREIS LAS PRIMERAS VECES ME AVISAIS Y PUSHEAMOS JUNTOS
-  NADIE TOCARA LA RAMA MASTER, Y NADIE HARA NADA EN LA RAMA DEV, lo unico que se hara en la rama dev es sacarse nuevas 
-  ramas.
-  
-  Recordad siempre ver en que rama estais trabajando lo pone en la terminal como ya os dije antes, es muy importante siempre
-  saber donde estamos posicionados para no cagarla.
-  
-  Es una buena practica que si yo por ejemplo tengo que realizar una vista de usuario que conlleva varias cosas como por
-  ejemplo añadir una foto editar informacion, crear unas cards etc cada vez que haga algo que funcione lo commitee, aunque 
-  no lo pushee en remoto, ya que de esta forma si he realizado el añadir una foto de perfil de puta madre, y luego me pongo 
-  a hacer un formulario para editar los datos de un usuario y en este punto me lio tanto que no se donde coño estoy si ya he 
-  commiteado despues de realizar lo de la foto de putamadre, simplemente con hacer un git checkout . se borrara todo lo que 
-  hice hasta ese commit, es decir empezare justo despues de que la parte de la foto me funcione de puta madre.
+`git checkout nombreDeLaRama` -> nos lleva a la rama que queramos ir
+
+`git checkout .` -> nos borrara todos los cambios que no hayan sido commiteados (Este comando yo lo uso para cuando tengas 
+que volver al principio de todo de esa rama que te creaste porque las cosas que quieres hacer no te salen y quieres volver
+al estado del proyecto en el que funcionaba todo correctamente.
+
+`git status` -> nos dice en que estado estan nuestros archivos rojo significa que no estan añadidos para el commit, verde 
+significa que ya estan añadidos y estan listos para commitear.
+
+`git add` -> añadir archivos para commitear
+
+`git commit -m 'Mensaje a escribir'` -> esto commiteara nuestros archivos (por asi decirlo es un punto de restauracion).
+El mensaje es totalmente obligatorio y deberia describir que se ha hecho con ese commit.
+
+`git push origin NombreDeLaRama` -> sirve para poner lo que hemos realizado (nuestra rama) en remoto y que todos nosotros    lo podamos ver. Recordad que nunca vais a trabajar en dev o en master solo creareis ramas a partir de dev y pusheareis      vuestras ramas con el nombre que le hayais dado y luego yo las mezclo con el proyecto.
+
+`git pull origin NombreDeLaRama`-> lo usaremos para traernos la rama remota de dev que sera siempre la mas actualizada, y lo
+haremos siempre obligatoriamente antes de crearnos una nueva rama para trabajar.
+
+`git checkout nombreDeLaRamaQueNoExisteEnNuestroRepositorioLocal` -> imaginemos que pepo quiere bajarse una rama que esta en
+remoto de algo que ha realizado juan pepo deberia usar este comando para traerse esa rama del repositorio remoto al 
+repositorio local
+
+`git branch` -> nos muestra las ramas que tenemos en local
+
+`git branch -r` ->nos muestra las ramas que existe en el repositorio remoto
+
+`git branch nuevaRamaQueVamosACrear` -> esto se usa para crear una nueva rama a partir de la que estamos posicionados
+despues de crear esta rama haremos el comando git checkout nuevaRamaQueCreamosAnteriormente y ya estamos posicionados
+en nuestra nueva rama.
+
+**HAY QUE TENER MUCHO CUIDADO CON EL COMANDO PUSH SI QUEREIS LAS PRIMERAS VECES ME AVISAIS Y PUSHEAMOS JUNTOS
+NADIE TOCARA LA RAMA MASTER, Y NADIE HARA NADA EN LA RAMA DEV, LO UNICO QUE SE HARA EN LA RAMA DEV ES SACARSE NUEVAS RAMAS.**
+
+Recordad siempre ver en que rama estais trabajando lo pone en la terminal como ya os dije antes, es muy importante siempre
+saber donde estamos posicionados para no cagarla.
+
+Es una buena practica que si yo por ejemplo tengo que realizar una vista de usuario que conlleva varias cosas como por
+ejemplo: añadir una foto, editar informacion, crear unas cards, etc. Cada vez que haga algo que funcione lo commitee, aunque 
+no lo pushee en remoto, ya que de esta forma si he realizado el añadir una foto de perfil de puta madre, y luego me pongo 
+a hacer un formulario para editar los datos de un usuario y en este punto me lio tanto que no se donde coño estoy, si ya he 
+commiteado despues de realizar lo de la foto de putamadre, simplemente con hacer un `git checkout .` se borrara todo lo que 
+hice hasta ese commit, es decir, empezare justo despues de que la parte de la foto me funcione de puta madre.
