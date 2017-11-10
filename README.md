@@ -104,25 +104,20 @@ Por ejemplo a Pepo le toca hacer un formulario de registro de usuario, los pasos
 decir hasta ahora pepo habia estado trabajando en una rama que solo estaba en su ordenador, al pushear hara que esa rama 
 sea visible para todos ya que estara en remoto y de esta forma yo me podre encargar de mezclarlo con nuestro proyecto.
 Para pushear una rama hay que seguir unos pasos:
-      * 6.1 Hay que añadir todos los cambios que se han realizado en los archivos, para ello usara el siguiente comando:
-      
-            `git add .`
-            
-      (El caracter '.' lo que dice es que añadira todos los archivos modificados al commit que se realizara)
-      * 6.2 Una vez añadidos los cambios tiene que commitearlos (Esto se hace para que podamos volver a este punto si la 
-      liamos) para ello pepo ejecutara el siguiente comando: 
-      
-            `git commit -m ''` 
-            
-      dentro de las comillas ira el mensaje que queramos poner, por ejemplo:
-      
-            `git commit -m 'formulario de usuario realizado'`,
-            
-      este mensaje sera visible para todos y de esta forma podremos ver que funcionalidad se ha añadido en esa rama.
-      * 6.3. Una vez realizado el commit pepo tiene que pushear esa rama para lo que usara el comando: 
-      
-            `git push origin nombreDeLaRama` 
- 
+* 6.1 Hay que añadir todos los cambios que se han realizado en los archivos, para ello usara el siguiente comando:
+
+      git add .
+
+(El caracter '.' lo que dice es que añadira todos los archivos modificados al commit que se realizara)
+* 6.2 Una vez añadidos los cambios tiene que commitearlos (Esto se hace para que podamos volver a este punto si la 
+liamos) para ello pepo ejecutara el siguiente comando: 
+
+      git commit -m '' //dentro de las comillas ira el mensaje obligatorio que veremos todos
+
+* 6.3. Una vez realizado el commit pepo tiene que pushear esa rama para lo que usara el comando: 
+
+      git push origin nombreDeLaRama
+
 Una vez hecho esto y si no ha habido ningun error la rama estara disponible en remoto y ya me encargare yo de mezclarla      con  el proyecto final.
 
 **RECORDAD COSAS IMPORTANTES:**
