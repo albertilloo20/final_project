@@ -90,9 +90,9 @@ Por ejemplo a Pepo le toca hacer un formulario de registro de usuario, los pasos
   
       `teki@teki-SVE1513Y1ESI:~/Projects/final_project/AlquilaCar(nombreDeLaRama)$`
 
-   **"teki"** sera el usuario en mi caso es teki en el vuestro sera pepo juan o como se llame vuestro usuario.
+   **"teki@teki"** sera el usuario en mi caso es teki en el vuestro sera pepo juan o como se llame vuestro usuario.
 
-   **"SVE1513Y1ESI"** supongo que sera el hash de ese usuario(esto no tiene importancia).
+   **"SVE1513Y1ESI"** es el modelo de ordenador(esto no tiene importancia).
 
    **"~/Projects/final_project/AlquilaCar"** es el directorio en donde nos encontramos.
 
