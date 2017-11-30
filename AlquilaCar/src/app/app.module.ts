@@ -11,23 +11,28 @@ import { APP_ROUTING } from './app-routes';
 import { LoginService } from './services/login.service';
 // Componentes
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './componentes/shared/navbar/navbar.component';
+import { FooterComponent } from './componentes/shared/footer/footer.component';
+import { RegisterComponent } from './componentes/register/register.component';
+import { SubidaCocheComponent } from './componentes/subida-coche/subida-coche.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { VistaCochesComponent } from './componentes/vista-coches/vista-coches.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { VistaDetalladaComponent } from './componentes/vista-detallada/vista-detallada.component';
+import { UserChangesComponent } from './componentes/user-changes/user-changes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent,
     RegisterComponent,
+    SubidaCocheComponent,
     InicioComponent,
     VistaCochesComponent,
-    LoginComponent
+    LoginComponent,
+    VistaDetalladaComponent,
+    UserChangesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
+import { LoginService } from '../../services/login.service';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase/app';
 import EmailAuthProvider = firebase.auth.EmailAuthProvider;
