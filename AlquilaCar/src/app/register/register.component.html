@@ -1,13 +1,95 @@
-<div class="container">
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" autocomplete="off">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" autocomplete="off">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<div class="container main-container">
+    <h4>Formularios <small>template</small></h4>
+    <hr>
+    <form (submit)="guardar(user)" #user="ngForm" novalidate="">
+
+      <div>
+
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Nombre</label>
+          <div class="col-8">
+
+            <input class="form-control"
+                   type="text"
+                   placeholder="Nombre"
+                   name="nombre"
+                   [(ngModel)]="usuario.nombre"
+                   minlength="3"
+                   required
+                   #nombre="ngModel">
+            <div *ngIf="nombre.errors?.required">
+              El campo nombre es obligatorio
+            </div>
+            <div *ngIf="nombre.errors?.minlength">
+              El campo nombre debe tener minimo  {{ nombre.errors.minlength.requiredLength }} caracteres
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Apellido</label>
+          <div class="col-8">
+
+            <input class="form-control"
+                   type="text"
+                   placeholder="Apellido"
+                   name="apellido"
+                   [(ngModel)]="usuario.apellido"
+                   required
+                   #apellido="ngModel">
+            <div *ngIf="apellido.errors?.required">
+              El campo apellido es obligatorio
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Correo</label>
+        <div class="col-md-8">
+
+          <input class="form-control"
+                 type="email"
+                 placeholder="Correo electrónico"
+                 name="email"
+                 [(ngModel)]="usuario.email"
+                 required
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                 #email="ngModel">
+          <div *ngIf="email.errors?.required">
+            El campo correo es obligatorio
+          </div>
+          <div *ngIf="email.errors?.pattern">
+            Por favor introduzca un correo valido. Ej. nombre@dominio.com
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+          <button [disabled]="!user.valid" type="submit" class="btn btn-outline-primary">
+            Guardar
+          </button>
+        </div>
+      </div>
+
+    </form>
+    <!--<form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button class="btn btn-block btn-primary">login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>-->
+
 </div>
