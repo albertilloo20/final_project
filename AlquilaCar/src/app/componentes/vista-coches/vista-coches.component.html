@@ -1,4 +1,41 @@
-<form class="form-inline my-2 my-lg-0">
-  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-  <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
-</form>
+<div class="container">
+  <div class="container_form d-flex justify-content-end">
+    <div class="search_filter mr-auto p-2">
+      <span class="title_forms">Busca el coche que deseas...</span>
+      <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-warning my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+    <div class="select_filter p-2">
+      <span class="title_forms">O bien selecciona una de sus características</span>
+      <form class="form-inline my-2 my-lg-0">
+        <select class="custom-select mr-sm-2" [(ngModel)]="marca_seleccionada" name="marca_search" (change)="searchByMarca()">
+          <option value="" selected>-Marca-</option>
+          <option *ngFor="let marca of marcas" value="{{marca.value}}">{{marca.name }}</option>
+        </select>
+        <select class="custom-select mr-sm-2" [(ngModel)]="puertas_seleccionadas" name="puertas_search" (change)="searchByPuertas()">
+          <option value="0" selected>-Nº de puertas-</option>
+          <option *ngFor="let puerta of puertas" value="{{puerta}}">{{puerta}}</option>
+        </select>
+        <select class="custom-select" [(ngModel)]="plazas_seleccionadas" name="plazas_search"(change)="searchByPlazas()">
+          <option value="0" selected>-Nº de plazas-</option>
+          <option *ngFor="let plaza of plazas" value="{{plaza}}">{{plaza}}</option>
+        </select>
+      </form>
+    </div>
+
+  </div>
+  <div class="card-columns">
+    <div class="card" *ngFor="let coche of coches">
+      <img class="card-img-top" src="../../assets/bmw.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h4 class="card-title">{{coche.marca | capitalize}}</h4>
+        <p class="card-text">Km: {{coche.km | pointReplacer}} Km</p>
+        <p class="card-text">Puertas: {{coche.puertas}}</p>
+        <p class="card-text">Plazas {{coche.plazas}}</p>
+        <a href="#" class="btn btn-primary" [routerLink]="['/coche']">Ver más</a>
+      </div>
+    </div>
+  </div>
+</div>

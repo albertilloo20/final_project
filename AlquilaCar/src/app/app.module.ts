@@ -5,10 +5,13 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { HttpClientModule } from '@angular/common/http';
 // Rutas
 import { APP_ROUTING } from './app-routes';
 // Servicios
 import { LoginService } from './services/login.service';
+import { CochesService } from './services/coches.service';
+import { MarcasService } from './services/marcas.service';
 // Componentes
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/shared/navbar/navbar.component';
@@ -20,6 +23,9 @@ import { VistaCochesComponent } from './componentes/vista-coches/vista-coches.co
 import { LoginComponent } from './componentes/login/login.component';
 import { VistaDetalladaComponent } from './componentes/vista-detallada/vista-detallada.component';
 import { UserChangesComponent } from './componentes/user-changes/user-changes.component';
+// Pipes
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { PointReplacerPipe } from './pipes/point-replacer.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,9 @@ import { UserChangesComponent } from './componentes/user-changes/user-changes.co
     VistaCochesComponent,
     LoginComponent,
     VistaDetalladaComponent,
-    UserChangesComponent
+    UserChangesComponent,
+    CapitalizePipe,
+    PointReplacerPipe
   ],
   imports: [
     BrowserModule,
@@ -40,10 +48,13 @@ import { UserChangesComponent } from './componentes/user-changes/user-changes.co
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    MarcasService,
+    CochesService
   ],
   bootstrap: [AppComponent]
 })
