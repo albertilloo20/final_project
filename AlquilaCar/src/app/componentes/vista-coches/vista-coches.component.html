@@ -24,17 +24,18 @@
         </select>
       </form>
     </div>
-
   </div>
-  <div class="card-columns">
-    <div class="card" *ngFor="let coche of coches">
-      <img class="card-img-top" src="../../assets/bmw.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title">{{coche.marca | capitalize}}</h4>
-        <p class="card-text">Km: {{coche.km | pointReplacer}} Km</p>
-        <p class="card-text">Puertas: {{coche.puertas}}</p>
-        <p class="card-text">Plazas {{coche.plazas}}</p>
-        <a href="#" class="btn btn-primary" [routerLink]="['/coche']">Ver más</a>
+  <div class="row">
+    <div class="col-sm-3" *ngFor="let coche of coches">
+      <div class="card coche" >
+        <img class="card-img-top  img-fluid" src="../../assets/bmw.jpg" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">{{coche.marca | capitalize}}</h4>
+          <p class="card-text">Km: {{coche.km | pointReplacer}} Km</p>
+          <p class="card-text">Puertas: {{coche.puertas}}</p>
+          <p class="card-text">Plazas {{coche.plazas}}</p>
+          <a href="#" class="btn btn-primary" [routerLink]="['/coche']">Ver más</a>
+        </div>
       </div>
     </div>
   </div>

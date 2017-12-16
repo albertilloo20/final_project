@@ -15,6 +15,7 @@ export class CochesService {
   getCochesByMarca(marca: string) {
     const URLByMarca = this.cochesURL + '?orderBy="marca"&equalTo="' + marca + '"';
     return this.httpClient.get(URLByMarca).pipe(map((data: any) => {
+      console.log(data);
       return data;
     }));
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarcasService } from '../../services/marcas.service';
 import { CochesService } from '../../services/coches.service';
+import { Coche } from '../../interfaces/coche';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 import { PointReplacerPipe } from '../../pipes/point-replacer.pipe';
 import { NgForm } from '@angular/forms';
@@ -20,7 +21,9 @@ export class VistaCochesComponent implements OnInit {
   plazas_seleccionadas = '0';
   seleccion = '';
   coches: Coche[];
-  constructor(private _marcasService: MarcasService, private _cochesService: CochesService) {}
+  constructor(private _marcasService: MarcasService, private _cochesService: CochesService) {
+
+  }
 
   ngOnInit() {
     this.marcas = this._marcasService.marcas;
@@ -99,10 +102,4 @@ export class VistaCochesComponent implements OnInit {
   }
 
 }
-export class Coche {
-  marca: '';
-  modelo: '';
-  puertas: 0;
-  plazas: 0;
-  km: 0;
-}
+

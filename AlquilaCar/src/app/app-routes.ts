@@ -7,14 +7,16 @@ import { VistaCochesComponent } from './componentes/vista-coches/vista-coches.co
 import { LoginComponent } from './componentes/login/login.component';
 import { VistaDetalladaComponent } from './componentes/vista-detallada/vista-detallada.component';
 import { UserChangesComponent } from './componentes/user-changes/user-changes.component';
+import { RegisterGuard } from './guards/register.guard';
+import { LoginGuard } from './guards/login.guard';
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: InicioComponent},
   { path: 'coches', component: VistaCochesComponent},
   { path: 'coche', component: VistaDetalladaComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
   { path: 'userData', component: UserChangesComponent},
   { path: 'uploadCar', component: SubidaCocheComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'coches' }

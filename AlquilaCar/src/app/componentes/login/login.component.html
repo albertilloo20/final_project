@@ -1,3 +1,41 @@
-<p>
-  login works!
-</p>
+<div class="super-container">
+<div class="container">
+  <h2 class="text-primary">Inicia sesión</h2>
+  <hr class="bg-warning">
+  <div *ngIf="error != ''"class="alert alert-danger" role="alert">
+    <strong>{{error}}</strong>
+  </div>
+  <form [formGroup]="forma" (submit)="login()" >
+    <div class="form-group has-warning" [ngClass]="{'has-danger':error!=''}">
+      <div class="col-12 input-group">
+        <div class="input-group-addon">
+          <span class="oi oi-person"></span>
+        </div>
+        <input class="form-control"
+               type="email"
+               placeholder="Correo"
+               formControlName="email">
+      </div>
+    </div>
+    <div class="form-group has-warning" [ngClass]="{'has-danger':error!=''}">
+    <div class="col-12 input-group">
+      <div class="input-group-addon">
+        <span class="oi oi-key"></span>
+      </div>
+      <input class="form-control"
+             type="password"
+             placeholder="Contraseña"
+             formControlName="password">
+    </div>
+    </div>
+    <div class="col-md-12 ">
+      <button  type="submit" class="btn btn-primary btn-block">
+          Login
+      </button>
+    </div>
+    <div class="col-md-12 mt-2">
+      <span class="registrar">¿Todavía no tienes cuenta? <a [routerLink]="['/register']"class="font-weight-bold">Registrate</a></span>
+    </div>
+  </form>
+</div>
+</div>

@@ -1,3 +1,19 @@
 .logo_navbar {
   width: 5em;
 }
+.img_perfil{
+  width: 3em;
+  height: 3em;
+}
+.login__body {
+  background-color: #fff;
+  content: '';
+  height: 0.5em;
+  left: 91%;
+  margin-left: -0.25em;
+  margin-top: -0.25em;
+  position: absolute;
+  top: 0;
+  transform: rotate(45deg);
+  width: 0.5em;
+}

@@ -6,12 +6,15 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 // Rutas
 import { APP_ROUTING } from './app-routes';
 // Servicios
-import { LoginService } from './services/login.service';
 import { CochesService } from './services/coches.service';
 import { MarcasService } from './services/marcas.service';
+import { ProvinciasService } from './services/provincias.service';
+import { UserService} from './services/user.service';
+import { FireServiceService } from './services/fire-service.service';
 // Componentes
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/shared/navbar/navbar.component';
@@ -26,6 +29,9 @@ import { UserChangesComponent } from './componentes/user-changes/user-changes.co
 // Pipes
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { PointReplacerPipe } from './pipes/point-replacer.pipe';
+// Guards
+import { RegisterGuard } from './guards/register.guard';
+import { LoginGuard } from './guards/login.guard';
 
 @NgModule({
   declarations: [
@@ -49,12 +55,17 @@ import { PointReplacerPipe } from './pipes/point-replacer.pipe';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
-    LoginService,
     MarcasService,
-    CochesService
+    CochesService,
+    ProvinciasService,
+    UserService,
+    FireServiceService,
+    RegisterGuard,
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })

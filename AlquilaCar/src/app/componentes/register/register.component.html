@@ -1,95 +1,152 @@
-<div class="container main-container">
-    <h4>Formularios <small>template</small></h4>
+<div class="container">
+    <h2 class="text-primary">Formulario de registro</h2>
+    <small class="text-primary">Todos los campos marcados con * son obligatorios</small>
     <hr>
-    <form (submit)="guardar(user)" #user="ngForm" novalidate="">
-
-      <div>
-
-        <div class="form-group row">
-          <label class="col-2 col-form-label">Nombre</label>
-          <div class="col-8">
-
-            <input class="form-control"
-                   type="text"
-                   placeholder="Nombre"
-                   name="nombre"
-                   [(ngModel)]="usuario.nombre"
-                   minlength="3"
-                   required
-                   #nombre="ngModel">
-            <div *ngIf="nombre.errors?.required">
-              El campo nombre es obligatorio
-            </div>
-            <div *ngIf="nombre.errors?.minlength">
-              El campo nombre debe tener minimo  {{ nombre.errors.minlength.requiredLength }} caracteres
-            </div>
-          </div>
+  <form [formGroup]="forma" (submit)="verUser()">
+    <div class="row">
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['nombre'].invalid && forma.controls['nombre'].touched, 'has-success':forma.controls['nombre'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Nombre:</label>
+        <div class="col-md-12">
+          <input class="form-control"
+                 type="text"
+                 placeholder="Nombre"
+                 formControlName="nombre">
+          <small *ngIf="forma.controls['nombre'].errors?.required && forma.controls['nombre'].touched" class="form-control-feedback">
+            El campo nombre no puede estar vacio
+          </small>
+          <small *ngIf="forma.controls['nombre'].errors?.pattern && forma.controls['nombre'].touched" class="form-control-feedback">
+            El campo nombre no puede empezar por espacio ni contener numeros o caracteres especiales (@, #, '.' ...)
+          </small>
         </div>
-
-        <div class="form-group row">
-          <label class="col-2 col-form-label">Apellido</label>
-          <div class="col-8">
-
-            <input class="form-control"
-                   type="text"
-                   placeholder="Apellido"
-                   name="apellido"
-                   [(ngModel)]="usuario.apellido"
-                   required
-                   #apellido="ngModel">
-            <div *ngIf="apellido.errors?.required">
-              El campo apellido es obligatorio
-            </div>
-          </div>
-        </div>
-
       </div>
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['username'].invalid && forma.controls['username'].touched, 'has-success':forma.controls['username'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Username:</label>
+        <div class="col-md-12">
+          <input class="form-control"
+                 type="text"
+                 placeholder="Username"
+                 formControlName="username">
+          <small *ngIf="forma.controls['username'].errors?.required && forma.controls['username'].touched" class="form-control-feedback">
+            El username es obligatorio
+          </small>
+          <small *ngIf="forma.controls['username'].errors?.pattern && forma.controls['username'].touched" class="form-control-feedback">
+            El campo username solo puede contener numeros letras y los caracteres '_' y '-'
+          </small>
+          <small *ngIf="forma.controls['username'].errors?.existe && forma.controls['username'].touched" class="form-control-feedback">
+            Este usuario ya existe en AlquilaCar
+          </small>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['apellido_uno'].invalid && forma.controls['apellido_uno'].touched, 'has-success':forma.controls['apellido_uno'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Primer apellido:</label>
+        <div class="col-md-12">
+          <input class="form-control"
+                 type="text"
+                 placeholder="Primer apellido"
+                 formControlName="apellido_uno">
+          <small *ngIf="forma.controls['apellido_uno'].errors?.required && forma.controls['apellido_uno'].touched" class="form-control-feedback">
+          El campo primer apellido no puede estar vacio
+          </small>
+          <small *ngIf="forma.controls['apellido_uno'].errors?.pattern && forma.controls['nombre'].touched" class="form-control-feedback">
+            El campo primer apellido no puede empezar por espacio ni contener numeros o caracteres especiales (@, #, '.' ...)
+          </small>
+        </div>
+      </div>
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['apellido_dos'].invalid && forma.controls['apellido_dos'].touched, 'has-success':forma.controls['apellido_dos'].value != ''}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">Segundo Apellido:</label>
+        <div class="col-md-12">
 
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Correo</label>
-        <div class="col-md-8">
+          <input class="form-control"
+                 type="text"
+                 placeholder="Segundo apellido"
+                 formControlName="apellido_dos">
+          <small *ngIf="forma.controls['apellido_dos'].errors?.pattern && forma.controls['apellido_dos'].touched" class="form-control-feedback">
+            El campo segundo apellido no puede empezar por espacio ni contener numeros o caracteres especiales (@, #, '.' ...)
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['email'].invalid && forma.controls['email'].touched, 'has-success':forma.controls['email'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Email:</label>
+        <div class="col-md-12">
 
           <input class="form-control"
                  type="email"
-                 placeholder="Correo electrónico"
-                 name="email"
-                 [(ngModel)]="usuario.email"
-                 required
-                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                 #email="ngModel">
-          <div *ngIf="email.errors?.required">
-            El campo correo es obligatorio
-          </div>
-          <div *ngIf="email.errors?.pattern">
-            Por favor introduzca un correo valido. Ej. nombre@dominio.com
+                 placeholder="ejemplo@dominio.com"
+                 formControlName="email">
+          <small *ngIf="forma.controls['email'].errors?.required && forma.controls['email'].touched" class="form-control-feedback">
+            El email es obligatorio
+          </small>
+          <small *ngIf="forma.controls['email'].errors?.pattern && forma.controls['email'].touched" class="form-control-feedback">
+            El email no tiene un formato correcto (ejemplo@dominio.com)
+          </small>
+          <small *ngIf="forma.controls['email'].errors?.existe && forma.controls['email'].touched" class="form-control-feedback">
+            Esta cuenta de correo ya esta en uso
+          </small>
+        </div>
+      </div>
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['password'].invalid && forma.controls['password'].touched, 'has-success':forma.controls['password'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Contraseña:</label>
+        <div class="col-md-12">
+
+          <input class="form-control"
+                 type="password"
+                 placeholder="Contraseña"
+                 formControlName="password">
+          <small *ngIf="forma.controls['password'].errors?.required && forma.controls['password'].touched" class="form-control-feedback">
+            La contraseña es obligatoria
+          </small>
+          <small *ngIf="forma.controls['password'].errors?.pattern && forma.controls['password'].touched" class="form-control-feedback">
+            La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['telefono'].invalid && forma.controls['telefono'].touched, 'has-success':forma.controls['telefono'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Teléfono:</label>
+        <div class="col-md-12">
+
+          <input class="form-control"
+                 type="text"
+                 placeholder="Teléfono"
+                 formControlName="telefono"
+                 maxlength="9">
+          <small *ngIf="forma.controls['telefono'].errors?.required && forma.controls['telefono'].touched" class="form-control-feedback">
+            El teléfono es obligatorio
+          </small>
+          <small *ngIf="forma.controls['telefono'].errors?.pattern &&  forma.controls['telefono'].touched" class="form-control-feedback">
+            El teléfono tiene que tener 9 digitos sin espacios ni guiones
+          </small>
+        </div>
+      </div>
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['provincia'].invalid && forma.controls['provincia'].touched, 'has-success':forma.controls['provincia'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Provincia:</label>
+        <div class="col-md-12">
+
+          <select class="form-control"
+                 type="select"
+                 formControlName="provincia">
+          <option value="">-Seleccione una provincia-</option>
+          <option *ngFor="let provincia of provincias" value="{{provincia}}">{{provincia}}</option>
+          </select>
+          <div *ngIf="forma.controls['provincia'].errors?.required && forma.controls['provincia'].touched" class="form-control-feedback">
+            Debe seleccionar una provincia
           </div>
         </div>
       </div>
-
-
-
-      <div class="form-group row">
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <div class="input-group col-md-8">
-          <button [disabled]="!user.valid" type="submit" class="btn btn-outline-primary">
-            Guardar
+    </div>
+      <div class="row justify-content-md-center">
+          <button *ngIf="!forma.valid" [disabled]="!forma.valid"  data-toggle="tooltip" data-placement="right" title="El formulario no es valido" type="submit" class="col-md-6 btn btn-primary">
+            Registrame
           </button>
-        </div>
+          <button *ngIf="forma.valid" type="submit" class="col-md-6 btn btn-primary">
+            Registrame
+          </button>
       </div>
 
     </form>
-    <!--<form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button class="btn btn-block btn-primary">login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form>-->
-
 </div>

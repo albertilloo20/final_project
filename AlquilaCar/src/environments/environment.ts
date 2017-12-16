@@ -13,4 +13,5 @@ export const environment = {
     storageBucket: 'alquilacar-a9f10.appspot.com',
     messagingSenderId: '585192917555'
   }
+
 };
