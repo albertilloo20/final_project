@@ -28,13 +28,19 @@
   <div class="row">
     <div class="col-sm-3" *ngFor="let coche of coches">
       <div class="card coche" >
-        <img class="card-img-top  img-fluid" src="{{coche.imageurl}}" alt="Card image cap">
+        <img *ngIf="coche.alquilado == false" class="card-img-top  img-fluid img-coche" src="{{coche.imageurl}}" alt="Card image cap">
+        <img *ngIf="coche.alquilado == true" class="card-img-top  img-fluid img-coche-alquilado" src="{{coche.imageurl}}" alt="Card image cap">
+        <div *ngIf="coche.alquilado == true" style="position:absolute; top:0; left:0;"><img border="0"  src="../../../assets/alquilado.png" /></div>
+        <div class="text-white bg-inverse p-1 pl-3 pr-3" style="position:absolute; bottom:316px; right:0px;"><span>{{coche.precio}} €</span></div>
         <div class="card-block">
-          <h4 class="card-title">{{coche.marca | capitalize}}</h4>
+          <h3 class="card-title text-primary">{{coche.marca | capitalize}}</h3>
+          <hr class="bg-warning">
+          <h5 class="card-text">{{coche.modelo | capitalize}}</h5>
+          <hr class="bg-warning">
           <p class="card-text">Km: {{coche.km | pointReplacer}} Km</p>
           <p class="card-text">Puertas: {{coche.puertas}}</p>
           <p class="card-text">Plazas {{coche.plazas}}</p>
-          <a href="#" class="btn btn-primary" [routerLink]="['/coche']">Ver más</a>
+          <a [routerLink]="['/coche', coche.id]"class="btn btn-primary" >Ver más</a>
         </div>
       </div>
     </div>

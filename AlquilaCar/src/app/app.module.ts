@@ -35,6 +35,7 @@ import { PointReplacerPipe } from './pipes/point-replacer.pipe';
 import { RegisterGuard } from './guards/register.guard';
 import { LoginGuard } from './guards/login.guard';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import { ListadoCochesComponent } from './componentes/listado-coches/listado-coches.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
     UserChangesComponent,
     CapitalizePipe,
     PointReplacerPipe,
-    NgDropFilesDirective
+    NgDropFilesDirective,
+    ListadoCochesComponent
   ],
   imports: [
     BrowserModule,

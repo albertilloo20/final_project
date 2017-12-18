@@ -46,6 +46,7 @@ export class CargaImagenService {
     var ref = this.db.list('coches/');
     ref.update(id, {
         imageurl: contenido,
+        id: id
       }
     );}
 

@@ -59,6 +59,7 @@ export class SubidaCocheComponent implements OnInit {
 
   subeCoche() {
     this.coche =  {
+      alquilado: false,
       username: this.username,
       descripcion: this.forma.value.descripcion.toLowerCase(),
       marca: this.forma.value.marca.toLowerCase(),
@@ -67,14 +68,15 @@ export class SubidaCocheComponent implements OnInit {
       plazas: this.forma.value.plazas,
       km: this.forma.value.kilometros,
       precio: this.forma.value.precio,
+      id: ''
     };
     this._cargaCoche.guardarCoche(this.coche).subscribe(res => {
-      if (res){
+      if (res) {
         this.mensajeOk = 'Coche subido con exito';
       }
       this.cargarImagenesFirebase(res);
-    },error => {
-      if(error){
+    }, error => {
+      if (error) {
         this.mensajeFail = 'Ha ocurrido un error, por favor intentalo de nuevo';
       }
     });

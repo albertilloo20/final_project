@@ -1,5 +1,6 @@
 export interface Coche {
-  usuario: string;
+  alquilado: boolean;
+  username: string;
   descripcion: string;
   marca: string;
   modelo: string;
@@ -8,4 +9,5 @@ export interface Coche {
   km: number;
   precio: number;
   imageurl: any;
+  id: string;
 }

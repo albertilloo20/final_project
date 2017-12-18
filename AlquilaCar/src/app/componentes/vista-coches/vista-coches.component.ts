@@ -7,6 +7,7 @@ import { PointReplacerPipe } from '../../pipes/point-replacer.pipe';
 import { NgForm } from '@angular/forms';
 import { Observable} from "rxjs/Observable";
 import { CargaImagenService } from "../../services/carga-imagen.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-vista-coches',
@@ -23,7 +24,7 @@ export class VistaCochesComponent implements OnInit {
   plazas_seleccionadas = '0';
   seleccion = '';
   coches: Coche[];
-  constructor(private _marcasService: MarcasService, private _cochesService: CochesService, private _cargaImagen: CargaImagenService) {
+  constructor(public router: Router, private _marcasService: MarcasService, private _cochesService: CochesService, private _cargaImagen: CargaImagenService) {
 
   }
 
@@ -36,6 +37,7 @@ export class VistaCochesComponent implements OnInit {
         RESULT.push(RESPONSE[item]);
       }
       this.coches = RESULT;
+      console.log(this.coches);
     });
     this._cochesService.getCoches().subscribe(res => {
       const RESPONSE = res;
@@ -131,8 +133,8 @@ export class VistaCochesComponent implements OnInit {
       });
     }
   }
-  cargaImagen(){
-
+  viewCoche(id) {
+    this.router.navigate(['/coche/', id]);
   }
 }
 

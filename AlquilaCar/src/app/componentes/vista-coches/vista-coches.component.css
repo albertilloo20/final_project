@@ -56,3 +56,16 @@
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+.img-coche{
+  width: 100%;
+  height: 100%;
+}
+.img-coche-alquilado{
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  width: 100%;
+  height: 100%;
+}
+.precio{
+
+}

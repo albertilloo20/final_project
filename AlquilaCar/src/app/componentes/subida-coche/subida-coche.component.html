@@ -2,7 +2,10 @@
   <h2 class="text-primary">Anuncia tu coche</h2>
   <small class="text-primary">Todos los campos marcados con * son obligatorios</small>
   <div *ngIf="mensajeOk != '' "class="alert alert-success" role="alert">
-    <strong>{{mensajeOk}} </strong><a href="#" class="alert-link">Ir a mis coches</a>
+    <strong>{{mensajeOk}} </strong><a [routerLink]="['/miscoches']" class="alert-link">Ir a mis coches</a>
+  </div>
+  <div *ngIf="mensajeFail != '' "class="alert warning" role="alert">
+    <strong>{{mensajeFail}}. Intentalo de nuevo </strong>
   </div>
   <hr>
   <form [formGroup]="forma" (submit)="subeCoche()">

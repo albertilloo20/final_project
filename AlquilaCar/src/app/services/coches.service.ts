@@ -9,7 +9,6 @@ export class CochesService {
 
   getCoches() {
     return this.httpClient.get(this.cochesURL).pipe(map((data: any) => {
-      console.log(data);
       return data;
     }));
   }
@@ -28,6 +27,12 @@ export class CochesService {
   getCochesByPlazas(plazas: string) {
     const URLByMarca = this.cochesURL + '?orderBy="plazas"&equalTo="' + plazas + '"';
     return this.httpClient.get(URLByMarca).pipe(map((data: any) => {
+      return data;
+    }));
+  }
+  getCocheById(id: string) {
+    const URLById = this.cochesURL + '?orderBy="id"&equalTo="' + id + '"';
+    return this.httpClient.get(URLById).pipe(map((data: any) => {
       return data;
     }));
   }

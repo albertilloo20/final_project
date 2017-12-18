@@ -1,42 +1,54 @@
-<div class="container row-grid">
+<div class="container row-grid mt-5">
 	<div class="row">
-	  <div class="col-sm-6">
+	  <div class="col-sm-8">
+      <h2 class="text-primary mb-2"><b>Detalles del coche:</b></h2>
 	    <div class="row">
 	      <div class="col-sm-6">
 	        <a class="thumbnail">
-	            <img src="../../assets/bmw.jpg" alt="Foto coche" width="100%">
-	        </a>
+	            <img *ngIf="coche.alquilado == false" class="img-coche" src="{{coche?.imageurl}}" alt="Foto coche" width="100%">
+	            <img *ngIf="coche.alquilado == true" class="img-coche img-coche-alquilado" src="{{coche?.imageurl}}" alt="Foto coche">
+              <div *ngIf="coche.alquilado == true" style="position:absolute; top:0; left:14px;"><img border="0"  src="../../../assets/alquilado.png" /></div>
+          </a>
 	      </div>
 	      <div class="col-sm-6">
-					<h4>Marca: {{coche.marca | capitalize}}</h4>
-	        <p>Kilometros: {{coche.km | pointReplacer}} Km</p>
-					<p>Puertas: {{coche.puertas}} puertas</p>
-					<p>Plazas: {{coche.plazas}} plazas</p>
+          <h3 class="text-primary mb-3 text-capitalize"><u>{{coche?.marca}} {{coche?.modelo}}</u></h3>
+          <h5 class="text-primary"></h5>
+	        <p>Kilometros: {{coche?.km | pointReplacer}} Km</p>
+					<p>Puertas: {{coche?.puertas}} puertas</p>
+					<p>Plazas: {{coche?.plazas}} plazas</p>
+          <p>Precio de alquiler por días: {{coche?.precio}} €</p>
+          <p>Alquilado actualmente: No</p>
 	      </div>
 	    </div>
 	    <div class="row">
 	      <div class="col">
-	        <h4>Descripción</h4>
-	        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	        <h4 class="text-primary mt-2">Descripción del usuario</h4>
+	        <p>{{coche?.descripcion}}
 	        </p>
 	      </div>
 	    </div>
 	  </div>
 
-	  <div class="col-sm-6">
-	    <div class="row">
-	        <h4>Datos de usuario</h4>
-			</div>
-			 <div class="row">
-					<ul class="list-unstyled">
-						<li>Nombre: {{usuario.nombre}}</li>
-						<li>Apellidos: {{usuario.apellido}}</li>
-						<li>Email: {{usuario.correo}}</li>
-						<li>Provincia: {{usuario.provincia}}</li>
-						<li>Valoración: </li>
-						<li>Telefono de Contacto: {{usuario.telefono}}</li>
-					</ul>
+	  <div *ngIf="is_logged_in == true" class="col-sm-4 bg-faded pt-2 img-coche">
+			 <div class="col-sm-12">
+         <h2 class="text-primary mb-4"><b>Datos del usuario:</b></h2>
+						<p class="text-capitalize">Nombre: {{nombre}}</p>
+						<p class="text-capitalize">Apellido: {{apellido}}</p>
+						<p>Email: {{email}}</p>
+            <p class="text-capitalize">Provincia: {{provincia}}</p>
+            <p>Telefono de Contacto: {{telefono}}</p>
 	    </div>
-	  </div>
+    </div>
+    <div class="col-sm-4">
+      <div *ngIf="is_logged_in == false" class="col-sm-12">
+        <h2 class="text-primary mb-4"><b>Datos del usuario:</b></h2>
+        <div class="alert alert-warning" role="alert">
+          <strong>Es necesario que inicies sesion para ver estos datos. </strong><a [routerLink]="['/login']" class="alert-link">Iniciar sesión</a>
+        </div>
+        <div class="alert alert-danger" role="alert">
+          <strong>Si todavia no tienes una cuenta puedes registrarte en este enlace: </strong><a [routerLink]="['/register']" class="alert-link">Registrate</a>
+        </div>
+      </div>
+    </div>
 	</div>
 </div>
