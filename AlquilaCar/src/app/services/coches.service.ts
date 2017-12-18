@@ -9,24 +9,24 @@ export class CochesService {
 
   getCoches() {
     return this.httpClient.get(this.cochesURL).pipe(map((data: any) => {
+      console.log(data);
       return data;
     }));
   }
   getCochesByMarca(marca: string) {
     const URLByMarca = this.cochesURL + '?orderBy="marca"&equalTo="' + marca + '"';
     return this.httpClient.get(URLByMarca).pipe(map((data: any) => {
-      console.log(data);
       return data;
     }));
   }
   getCochesByPuertas(puertas: string) {
-    const URLByMarca = this.cochesURL + '?orderBy="puertas"&equalTo=' + puertas;
+    const URLByMarca = this.cochesURL + '?orderBy="puertas"&equalTo="' + puertas + '"';
     return this.httpClient.get(URLByMarca).pipe(map((data: any) => {
       return data;
     }));
   }
   getCochesByPlazas(plazas: string) {
-    const URLByMarca = this.cochesURL + '?orderBy="plazas"&equalTo=' + plazas;
+    const URLByMarca = this.cochesURL + '?orderBy="plazas"&equalTo="' + plazas + '"';
     return this.httpClient.get(URLByMarca).pipe(map((data: any) => {
       return data;
     }));

@@ -7,7 +7,7 @@ import {delay} from "rxjs/operator/delay";
 
 @Injectable()
 export class UserService {
-  URLUsuarios = 'https://alquilacar-a9f10.firebaseio.com/usuarios.json'
+  URLUsuarios = 'https://alquilacar-a9f10.firebaseio.com/usuarios.json';
   constructor(private httpClient: HttpClient) { }
 
   guardarUsuario(usuario: Usuario) {

@@ -15,6 +15,8 @@ import { MarcasService } from './services/marcas.service';
 import { ProvinciasService } from './services/provincias.service';
 import { UserService} from './services/user.service';
 import { FireServiceService } from './services/fire-service.service';
+import { CargaImagenService } from './services/carga-imagen.service';
+import { CargaCocheService } from './services/carga-coche.service';
 // Componentes
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/shared/navbar/navbar.component';
@@ -32,6 +34,7 @@ import { PointReplacerPipe } from './pipes/point-replacer.pipe';
 // Guards
 import { RegisterGuard } from './guards/register.guard';
 import { LoginGuard } from './guards/login.guard';
+import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { LoginGuard } from './guards/login.guard';
     VistaDetalladaComponent,
     UserChangesComponent,
     CapitalizePipe,
-    PointReplacerPipe
+    PointReplacerPipe,
+    NgDropFilesDirective
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,9 @@ import { LoginGuard } from './guards/login.guard';
     UserService,
     FireServiceService,
     RegisterGuard,
-    LoginGuard
+    LoginGuard,
+    CargaImagenService,
+    CargaCocheService
   ],
   bootstrap: [AppComponent]
 })

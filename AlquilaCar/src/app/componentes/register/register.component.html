@@ -133,9 +133,9 @@
           <option value="">-Seleccione una provincia-</option>
           <option *ngFor="let provincia of provincias" value="{{provincia}}">{{provincia}}</option>
           </select>
-          <div *ngIf="forma.controls['provincia'].errors?.required && forma.controls['provincia'].touched" class="form-control-feedback">
+          <small *ngIf="forma.controls['provincia'].errors?.required && forma.controls['provincia'].touched" class="form-control-feedback">
             Debe seleccionar una provincia
-          </div>
+          </small>
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@ import { Coche } from '../../interfaces/coche';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 import { PointReplacerPipe } from '../../pipes/point-replacer.pipe';
 import { NgForm } from '@angular/forms';
+import { Observable} from "rxjs/Observable";
+import { CargaImagenService } from "../../services/carga-imagen.service";
 
 @Component({
   selector: 'app-vista-coches',
@@ -15,21 +17,35 @@ export class VistaCochesComponent implements OnInit {
   // Incializacion de variables
   marcas: any [] = [];
   plazas: number[] = [2, 4, 5, 6 , 7 , 8 , 9];
-  puertas: number[] = [3, 5];
+  puertas: number[] = [2, 3, 5];
   marca_seleccionada = '';
   puertas_seleccionadas = '0';
   plazas_seleccionadas = '0';
   seleccion = '';
   coches: Coche[];
-  constructor(private _marcasService: MarcasService, private _cochesService: CochesService) {
+  constructor(private _marcasService: MarcasService, private _cochesService: CochesService, private _cargaImagen: CargaImagenService) {
 
   }
 
   ngOnInit() {
     this.marcas = this._marcasService.marcas;
     this._cochesService.getCoches().subscribe(res => {
-      this.coches = res;
+      const RESPONSE = res;
+      const RESULT = [];
+      for (let item in RESPONSE) {
+        RESULT.push(RESPONSE[item]);
+      }
+      this.coches = RESULT;
     });
+    this._cochesService.getCoches().subscribe(res => {
+      const RESPONSE = res;
+      const RESULT = [];
+      for (let item in RESPONSE) {
+        RESULT.push(RESPONSE[item]);
+      }
+      this.coches = RESULT;
+    });
+
   }
   // Funcion para buscar coches por marcas
   searchByMarca() {
@@ -41,7 +57,12 @@ export class VistaCochesComponent implements OnInit {
     // Si no esta vacia se muestran los coches de la marca seleccionada
     if (this.seleccion === '') {
       this._cochesService.getCoches().subscribe(res => {
-        this.coches = res;
+        const RESPONSE = res;
+        const RESULT = [];
+        for (let item in RESPONSE) {
+          RESULT.push(RESPONSE[item]);
+        }
+        this.coches = RESULT;
       });
     }else {
       this._cochesService.getCochesByMarca(this.seleccion).subscribe(res => {
@@ -64,7 +85,12 @@ export class VistaCochesComponent implements OnInit {
     // Si no esta vacia se muestran los coches de la marca seleccionada
     if (this.seleccion === '0') {
       this._cochesService.getCoches().subscribe(res => {
-        this.coches = res;
+        const RESPONSE = res;
+        const RESULT = [];
+        for (let item in RESPONSE) {
+          RESULT.push(RESPONSE[item]);
+        }
+        this.coches = RESULT;
       });
     }else {
       this._cochesService.getCochesByPuertas(this.seleccion).subscribe(res => {
@@ -87,7 +113,12 @@ export class VistaCochesComponent implements OnInit {
     // Si no esta vacia se muestran los coches de la marca seleccionada
     if (this.seleccion === '0') {
       this._cochesService.getCoches().subscribe(res => {
-        this.coches = res;
+        const RESPONSE = res;
+        const RESULT = [];
+        for (let item in RESPONSE) {
+          RESULT.push(RESPONSE[item]);
+        }
+        this.coches = RESULT;
       });
     }else {
       this._cochesService.getCochesByPlazas(this.seleccion).subscribe(res => {
@@ -100,6 +131,8 @@ export class VistaCochesComponent implements OnInit {
       });
     }
   }
+  cargaImagen(){
 
+  }
 }
 

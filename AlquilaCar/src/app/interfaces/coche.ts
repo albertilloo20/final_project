@@ -1,7 +1,11 @@
 export interface Coche {
-  marca: '';
-  modelo: '';
-  puertas: 0;
-  plazas: 0;
-  km: 0;
+  usuario: string;
+  descripcion: string;
+  marca: string;
+  modelo: string;
+  puertas: number;
+  plazas: number;
+  km: number;
+  precio: number;
+  imageurl: any;
 }

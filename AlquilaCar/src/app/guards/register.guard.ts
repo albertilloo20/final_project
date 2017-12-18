@@ -15,6 +15,7 @@ export class RegisterGuard implements CanActivate {
         return false;
       } else {
         this.router.navigate(['/register']);
+
       }
     });
     return true;

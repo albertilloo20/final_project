@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 import {Usuario, UsuarioAuth} from '../../interfaces/usuario';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-register',

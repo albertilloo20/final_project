@@ -1,3 +1,142 @@
-<p>
-  subida-coche works!
-</p>
+<div class="container">
+  <h2 class="text-primary">Anuncia tu coche</h2>
+  <small class="text-primary">Todos los campos marcados con * son obligatorios</small>
+  <div *ngIf="mensajeOk != '' "class="alert alert-success" role="alert">
+    <strong>{{mensajeOk}} </strong><a href="#" class="alert-link">Ir a mis coches</a>
+  </div>
+  <hr>
+  <form [formGroup]="forma" (submit)="subeCoche()">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Foto:</label>
+        <div class="col-md-12">
+          <div NgDropFiles class="well drop-zone" [ngClass]="{'file-over': estaSobreDropZone}" (archivoSobre)="archivoSobreDropZone($event)" [archivos]="archivos">
+            <h6 class="text-primary">Arrastra la foto aqui</h6>
+            <img class="drop-image" src="../../../assets/drop-images.png"/>
+          </div>
+          <small class="text-primary" *ngFor="let archivo of archivos" >Nombre del archivo: {{archivo.nombreArchivo}}</small>
+
+            <button type="button" class="btn btn-primary col-md-12 mt-1" (click)="limpiarArchivos()">
+              Limpiar archivos
+            </button>
+
+        </div>
+      </div>
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['descripcion'].invalid && forma.controls['descripcion'].touched, 'has-success':forma.controls['marca'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Descripción:</label>
+        <div class="col-md-12">
+          <textarea class="form-control"
+                    rows="3"
+                    maxlength="200"
+                    placeholder="Una breve descripción de 200 caracteres máximo"
+                    formControlName="descripcion">
+          </textarea>
+          <small *ngIf="forma.controls['descripcion'].errors?.required && forma.controls['descripcion'].touched" class="form-control-feedback">
+            La descripcion es obligatoria
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['marca'].invalid && forma.controls['marca'].touched, 'has-success':forma.controls['marca'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Marca:</label>
+        <div class="col-md-12">
+
+          <select class="form-control"
+                  type="select"
+                  formControlName="marca">
+            <option value="">-Seleccione una marca-</option>
+            <option *ngFor="let marca of marcas" value="{{marca.value}}">{{marca.name}}</option>
+          </select>
+          <small *ngIf="forma.controls['marca'].errors?.required && forma.controls['marca'].touched" class="form-control-feedback">
+            Debe seleccionar una marca
+          </small>
+        </div>
+      </div>
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['modelo'].invalid && forma.controls['modelo'].touched, 'has-success':forma.controls['modelo'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Modelo:</label>
+        <div class="col-md-12">
+          <input class="form-control"
+                 type="text"
+                 placeholder="Modelo"
+                 formControlName="modelo">
+          <small *ngIf="forma.controls['modelo'].errors?.required && forma.controls['modelo'].touched" class="form-control-feedback">
+            El campo modelo no puede estar vacio
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['puertas'].invalid && forma.controls['puertas'].touched, 'has-success':forma.controls['puertas'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Nº de puertas:</label>
+        <div class="col-md-12">
+
+          <select class="form-control"
+                  type="select"
+                  formControlName="puertas">
+            <option value="">-Seleccione las puertas-</option>
+            <option *ngFor="let puerta of puertas" value="{{puerta}}">{{puerta}}</option>
+          </select>
+          <small *ngIf="forma.controls['puertas'].errors?.required && forma.controls['puertas'].touched" class="form-control-feedback">
+            Debe seleccionar las puertas
+          </small>
+        </div>
+      </div>
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['plazas'].invalid && forma.controls['plazas'].touched, 'has-success':forma.controls['plazas'].valid}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Plazas:</label>
+        <div class="col-md-12">
+
+          <select class="form-control"
+                  type="select"
+                  formControlName="plazas">
+            <option value="">-Seleccione las plazas-</option>
+            <option *ngFor="let plaza of plazas" value="{{plaza}}">{{plaza}}</option>
+          </select>
+          <small *ngIf="forma.controls['plazas'].errors?.required && forma.controls['plazas'].touched" class="form-control-feedback">
+            Debe seleccionar las plazas
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['kilometros'].invalid && forma.controls['kilometros'].touched, 'has-success':forma.controls['kilometros'].value != ''}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Kilometros:</label>
+        <div class="col-md-12">
+
+          <input class="form-control"
+                 type="text"
+                 placeholder="Kilometros"
+                 formControlName="kilometros">
+          <small *ngIf="forma.controls['kilometros'].errors?.pattern && forma.controls['kilometros'].touched" class="form-control-feedback">
+            El campo kilometros solo puede contener números
+          </small>
+          <small *ngIf="forma.controls['kilometros'].errors?.required && forma.controls['kilometros'].touched" class="form-control-feedback">
+            El campo kilometros no puede estar vacio
+          </small>
+        </div>
+      </div>
+      <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['precio'].invalid && forma.controls['precio'].touched, 'has-success':forma.controls['precio'].value != ''}">
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Precio:</label>
+        <div class="col-md-12">
+
+          <input class="form-control"
+                 type="text"
+                 placeholder="Precio"
+                 formControlName="precio">
+          <small *ngIf="forma.controls['precio'].errors?.pattern && forma.controls['precio'].touched" class="form-control-feedback">
+            El campo precio solo puede contener números
+          </small>
+          <small *ngIf="forma.controls['precio'].errors?.required && forma.controls['precio'].touched" class="form-control-feedback">
+            El campo precio no puede estar vacio
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <button [disabled]="!forma.valid || archivos.length == 0 || !permiteCargar"  data-toggle="tooltip" data-placement="right" title="El formulario no es valido" type="submit" class="col-md-6 btn btn-primary">
+        Anunciar
+      </button>
+    </div>
+
+  </form>
+</div>
