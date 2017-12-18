@@ -1,3 +1,42 @@
-<p>
-  vista-detallada works!
-</p>
+<div class="container row-grid">
+	<div class="row">
+	  <div class="col-sm-6">
+	    <div class="row">
+	      <div class="col-sm-6">
+	        <a class="thumbnail">
+	            <img src="../../assets/bmw.jpg" alt="Foto coche" width="100%">
+	        </a>
+	      </div>
+	      <div class="col-sm-6">
+					<h4>Marca: {{coche.marca | capitalize}}</h4>
+	        <p>Kilometros: {{coche.km | pointReplacer}} Km</p>
+					<p>Puertas: {{coche.puertas}} puertas</p>
+					<p>Plazas: {{coche.plazas}} plazas</p>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col">
+	        <h4>Descripción</h4>
+	        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	        </p>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="col-sm-6">
+	    <div class="row">
+	        <h4>Datos de usuario</h4>
+			</div>
+			 <div class="row">
+					<ul class="list-unstyled">
+						<li>Nombre: {{usuario.nombre}}</li>
+						<li>Apellidos: {{usuario.apellido}}</li>
+						<li>Email: {{usuario.correo}}</li>
+						<li>Provincia: {{usuario.provincia}}</li>
+						<li>Valoración: </li>
+						<li>Telefono de Contacto: {{usuario.telefono}}</li>
+					</ul>
+	    </div>
+	  </div>
+	</div>
+</div>
