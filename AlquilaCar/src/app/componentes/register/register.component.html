@@ -131,7 +131,7 @@
                  type="select"
                  formControlName="provincia">
           <option value="">-Seleccione una provincia-</option>
-          <option *ngFor="let provincia of provincias" value="{{provincia}}">{{provincia}}</option>
+          <option *ngFor="let provincia of provincias" value="{{provincia}}">{{provincia | capitalize}}</option>
           </select>
           <small *ngIf="forma.controls['provincia'].errors?.required && forma.controls['provincia'].touched" class="form-control-feedback">
             Debe seleccionar una provincia

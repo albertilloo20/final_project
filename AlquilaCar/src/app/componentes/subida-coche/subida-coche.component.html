@@ -4,7 +4,7 @@
   <div *ngIf="mensajeOk != '' "class="alert alert-success" role="alert">
     <strong>{{mensajeOk}} </strong><a [routerLink]="['/miscoches']" class="alert-link">Ir a mis coches</a>
   </div>
-  <div *ngIf="mensajeFail != '' "class="alert warning" role="alert">
+  <div *ngIf="mensajeFail != '' "class=" alert alert-warning" role="alert">
     <strong>{{mensajeFail}}. Intentalo de nuevo </strong>
   </div>
   <hr>
@@ -119,7 +119,7 @@
         </div>
       </div>
       <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['precio'].invalid && forma.controls['precio'].touched, 'has-success':forma.controls['precio'].value != ''}">
-        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Precio:</label>
+        <label class="col-md-12 col-form-label text-primary font-weight-bold">* Precio de alquiler por dia:</label>
         <div class="col-md-12">
 
           <input class="form-control"

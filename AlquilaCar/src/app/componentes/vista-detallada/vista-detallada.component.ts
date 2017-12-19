@@ -55,16 +55,4 @@ export class VistaDetalladaComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
-/*const RESPONSE = resp;
-const RESULT = [];
-for (let item in RESPONSE) {
-  console.log(item);
-  RESULT.push(RESPONSE[item]);
-}
-this.nombre = RESULT[0].nombre;
-this.apellido = RESULT[0].apellido_uno;
-this.telefono = RESULT[0].telefono;
-this.email = RESULT[0].email;
-this.provincia = RESULT[0].provincia;*/

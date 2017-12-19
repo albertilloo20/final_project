@@ -4,9 +4,7 @@
 .container {
   margin-top: 2em;
 }
-.container_form {
-  margin-bottom: 1.5em;
-}
+
 .title_forms {
   color: #E0A800;
 }
@@ -66,6 +64,16 @@
   width: 100%;
   height: 100%;
 }
-.precio{
-
+.hvr-shrink {
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-shrink:hover, .hvr-shrink:focus, .hvr-shrink:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }

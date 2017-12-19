@@ -48,6 +48,7 @@ export class CargaImagenService {
         imageurl: contenido,
         id: id
       }
-    );}
+    );
+  }
 
 }

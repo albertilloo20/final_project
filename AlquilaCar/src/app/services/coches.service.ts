@@ -36,4 +36,10 @@ export class CochesService {
       return data;
     }));
   }
+  getCochesByAlquilado(alquilado){
+    const URLById = this.cochesURL + '?orderBy="alquilado"&equalTo=' + alquilado ;
+    return this.httpClient.get(URLById).pipe(map((data: any) => {
+      return data;
+    }));
+  }
 }

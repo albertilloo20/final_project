@@ -1,0 +1,9 @@
+.datos-container{
+  border-radius: 8px;
+  box-shadow: 0px 0px 6px 1px #007bff;
+}
+.cambia-datos-container{
+  background-color: #FFCD2B;
+  border-radius: 8px;
+  box-shadow: 0px 0px 6px 1px #007bff;
+}

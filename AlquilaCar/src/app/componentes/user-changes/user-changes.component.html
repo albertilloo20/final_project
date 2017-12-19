@@ -1,3 +1,142 @@
-<p>
-  user-changes works!
-</p>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4 bg-faded datos-container p-3">
+      <h4 class="text-primary col-md-12 mb-4 pl-0 mt-2"><u>Datos del usuario:</u></h4>
+      <p class="text-capitalize"><u class="text-primary mr-2">Nombre de usuario:</u> {{usuario.username}}</p>
+      <p class="text-capitalize"><u class="text-primary mr-2">Nombre:</u> {{usuario.nombre}}</p>
+      <p class="text-capitalize"><u class="text-primary mr-2">1er Apellido:</u> {{usuario.apellido_uno}}</p>
+      <p class="text-capitalize"><u class="text-primary mr-2">2º Apellido:</u> {{usuario.apellido_dos}}</p>
+      <p><u class="text-primary mr-2">Email:</u> {{usuario.email}}</p>
+      <p class="text-capitalize"><u class="text-primary mr-2">Provincia:</u> {{usuario.provincia}}</p>
+      <p class="text-capitalize"><u class="text-primary mr-2">Teléfono:</u> {{usuario.telefono}}</p>
+    </div>
+    <div class="col-md-7 offset-md-1 cambia-datos-container p-3">
+      <h4 class="text-primary col-md-12 mb-4 pl-0 mt-2"><u>Cambia tus datos:</u></h4>
+      <div *ngIf="mensajeOk != '' " class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{mensajeOk}} </strong>
+      </div>
+      <div *ngIf="mensajeFail != '' "class="alert alert-danger" role="alert">
+        <strong>{{mensajeFail}}</strong>
+      </div>
+      <form [formGroup]="forma" (submit)="updateUser()">
+        <div class="row">
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['nombre'].invalid && forma.controls['nombre'].touched, 'has-success':forma.controls['nombre'].valid}">
+            <label class="col-md-12 col-form-label text-primary font-weight-bold">* Nombre:</label>
+            <div class="col-md-12">
+              <input class="form-control"
+                     type="text"
+                     placeholder="Nombre"
+                     formControlName="nombre">
+              <small *ngIf="forma.controls['nombre'].errors?.required && forma.controls['nombre'].touched" class="form-control-feedback">
+                El campo nombre no puede estar vacio
+              </small>
+              <small *ngIf="forma.controls['nombre'].errors?.pattern && forma.controls['nombre'].touched" class="form-control-feedback">
+                El campo nombre no puede empezar por espacio ni contener numeros o caracteres especiales (@, #, '.' ...)
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['email'].invalid && forma.controls['email'].touched, 'has-success':forma.controls['email'].valid}">
+            <label class="col-md-12 col-form-label text-primary font-weight-bold">* Email:</label>
+            <div class="col-md-12">
+
+              <input class="form-control"
+                     type="email"
+                     placeholder="ejemplo@dominio.com"
+                     formControlName="email">
+              <small *ngIf="forma.controls['email'].errors?.required && forma.controls['email'].touched" class="form-control-feedback">
+                El email es obligatorio
+              </small>
+              <small *ngIf="forma.controls['email'].errors?.pattern && forma.controls['email'].touched" class="form-control-feedback">
+                El email no tiene un formato correcto (ejemplo@dominio.com)
+              </small>
+              <small *ngIf="forma.controls['email'].errors?.existe && forma.controls['email'].touched" class="form-control-feedback">
+                Esta cuenta de correo ya esta en uso
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['apellido_uno'].invalid && forma.controls['apellido_uno'].touched, 'has-success':forma.controls['apellido_uno'].valid}">
+            <label class="col-md-12 col-form-label text-primary font-weight-bold">* Primer apellido:</label>
+            <div class="col-md-12">
+              <input class="form-control"
+                     type="text"
+                     placeholder="Primer apellido"
+                     formControlName="apellido_uno">
+              <small *ngIf="forma.controls['apellido_uno'].errors?.required && forma.controls['apellido_uno'].touched" class="form-control-feedback">
+                El campo primer apellido no puede estar vacio
+              </small>
+              <small *ngIf="forma.controls['apellido_uno'].errors?.pattern && forma.controls['nombre'].touched" class="form-control-feedback">
+                El campo primer apellido no puede empezar por espacio ni contener numeros o caracteres especiales (@, #, '.' ...)
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['apellido_dos'].invalid && forma.controls['apellido_dos'].touched, 'has-success':forma.controls['apellido_dos'].value != ''}">
+            <label class="col-md-12 col-form-label text-primary font-weight-bold">Segundo Apellido:</label>
+            <div class="col-md-12">
+
+              <input class="form-control"
+                     type="text"
+                     placeholder="Segundo apellido"
+                     formControlName="apellido_dos">
+              <small *ngIf="forma.controls['apellido_dos'].errors?.pattern && forma.controls['apellido_dos'].touched" class="form-control-feedback">
+                El campo segundo apellido no puede empezar por espacio ni contener numeros o caracteres especiales (@, #, '.' ...)
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['telefono'].invalid && forma.controls['telefono'].touched, 'has-success':forma.controls['telefono'].valid}">
+            <label class="col-md-12 col-form-label text-primary font-weight-bold">* Teléfono:</label>
+            <div class="col-md-12">
+
+              <input class="form-control"
+                     type="text"
+                     placeholder="Teléfono"
+                     formControlName="telefono"
+                     maxlength="9">
+              <small *ngIf="forma.controls['telefono'].errors?.required && forma.controls['telefono'].touched" class="form-control-feedback">
+                El teléfono es obligatorio
+              </small>
+              <small *ngIf="forma.controls['telefono'].errors?.pattern &&  forma.controls['telefono'].touched" class="form-control-feedback">
+                El teléfono tiene que tener 9 digitos sin espacios ni guiones
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-md-6" [ngClass]="{'has-danger':forma.controls['provincia'].invalid && forma.controls['provincia'].touched, 'has-success':forma.controls['provincia'].valid}">
+            <label class="col-md-12 col-form-label text-primary font-weight-bold">* Provincia:</label>
+            <div class="col-md-12">
+
+              <select class="form-control"
+                      type="select"
+                      formControlName="provincia">
+                <option value="">-Seleccione una provincia-</option>
+                <option *ngFor="let provincia of provincias" value="{{provincia}}">{{provincia | capitalize}}</option>
+              </select>
+              <small *ngIf="forma.controls['provincia'].errors?.required && forma.controls['provincia'].touched" class="form-control-feedback">
+                Debe seleccionar una provincia
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+          <button *ngIf="!forma.valid" [disabled]="!forma.valid"  data-toggle="tooltip" data-placement="right" title="El formulario no es valido" type="submit" class="col-md-6 btn btn-primary">
+            Actualizar
+          </button>
+          <button *ngIf="forma.valid" type="submit" class="col-md-6 btn btn-primary">
+            Actualizar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-end">
+    <button type="button" (click)="enviarCambioDeContrasenia()" class="btn btn-primary col-md-3 mt-4 mr-5 mb-5">Cambiar contraseña</button>
+    <button type="button" class="btn btn-danger col-md-3 mt-4 mb-5">Eliminar usuario</button>
+  </div>
+
+</div>

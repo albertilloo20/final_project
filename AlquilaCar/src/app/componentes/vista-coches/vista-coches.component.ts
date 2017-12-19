@@ -8,7 +8,8 @@ import { NgForm } from '@angular/forms';
 import { Observable} from "rxjs/Observable";
 import { CargaImagenService } from "../../services/carga-imagen.service";
 import {Router} from "@angular/router";
-
+declare var jQuery:any;
+declare var $:any;
 @Component({
   selector: 'app-vista-coches',
   templateUrl: './vista-coches.component.html',
@@ -22,8 +23,9 @@ export class VistaCochesComponent implements OnInit {
   marca_seleccionada = '';
   puertas_seleccionadas = '0';
   plazas_seleccionadas = '0';
+  alquilados_seleccionado = false;
   seleccion = '';
-  coches: Coche[];
+  coches: any[] = [''];
   constructor(public router: Router, private _marcasService: MarcasService, private _cochesService: CochesService, private _cargaImagen: CargaImagenService) {
 
   }
@@ -37,7 +39,6 @@ export class VistaCochesComponent implements OnInit {
         RESULT.push(RESPONSE[item]);
       }
       this.coches = RESULT;
-      console.log(this.coches);
     });
     this._cochesService.getCoches().subscribe(res => {
       const RESPONSE = res;
@@ -48,6 +49,39 @@ export class VistaCochesComponent implements OnInit {
       this.coches = RESULT;
     });
 
+  }
+  moverSlider() {
+    var handle = $("#custom-handle");
+      $("#slider").slider({
+        create: function () {
+          handle.text($(this).slider("value"));
+        },
+        slide: function (event, ui) {
+          handle.text(ui.value);
+        }
+      });
+
+  }
+  searchNoAlquilado(){
+    if ( this.alquilados_seleccionado === true){
+      this._cochesService.getCochesByAlquilado(false).subscribe(res => {
+        const RESPONSE = res;
+        const RESULT = [];
+        for (let item in RESPONSE) {
+          RESULT.push(RESPONSE[item]);
+        }
+        this.coches = RESULT;
+      });
+    }else {
+      this._cochesService.getCoches().subscribe(res => {
+        const RESPONSE = res;
+        const RESULT = [];
+        for (let item in RESPONSE) {
+          RESULT.push(RESPONSE[item]);
+        }
+        this.coches = RESULT;
+      });
+    }
   }
   // Funcion para buscar coches por marcas
   searchByMarca() {
@@ -67,6 +101,7 @@ export class VistaCochesComponent implements OnInit {
         this.coches = RESULT;
       });
     }else {
+      this.searchNoAlquilado();
       this._cochesService.getCochesByMarca(this.seleccion).subscribe(res => {
         const RESPONSE = res;
         const RESULT = [];
@@ -95,6 +130,7 @@ export class VistaCochesComponent implements OnInit {
         this.coches = RESULT;
       });
     }else {
+      this.searchNoAlquilado();
       this._cochesService.getCochesByPuertas(this.seleccion).subscribe(res => {
         const RESPONSE = res;
         const RESULT = [];
@@ -123,6 +159,7 @@ export class VistaCochesComponent implements OnInit {
         this.coches = RESULT;
       });
     }else {
+      this.searchNoAlquilado()
       this._cochesService.getCochesByPlazas(this.seleccion).subscribe(res => {
         const RESPONSE = res;
         const RESULT = [];

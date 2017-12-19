@@ -85,7 +85,6 @@ export class NgDropFilesDirective {
       console.log('error mas de un archivo');
       return true;
     }
-      console.log('Todo ok')
       return false;
 
   }

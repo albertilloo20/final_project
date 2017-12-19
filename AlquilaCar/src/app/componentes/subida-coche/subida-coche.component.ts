@@ -80,6 +80,16 @@ export class SubidaCocheComponent implements OnInit {
         this.mensajeFail = 'Ha ocurrido un error, por favor intentalo de nuevo';
       }
     });
+    this.forma = new FormGroup({
+      'descripcion': new FormControl('', [Validators.required, Validators.maxLength(200)]),
+      'marca': new FormControl('', Validators.required),
+      'modelo': new FormControl('', Validators.required),
+      'plazas': new FormControl('', Validators.required),
+      'puertas': new FormControl('', Validators.required),
+      'kilometros': new FormControl('', [Validators.required, Validators.pattern('^[0-9]*')]),
+      'precio': new FormControl('', [Validators.required, Validators.pattern('^[0-9]*')]),
+
+    });
   }
   archivoSobreDropZone(evento: any) {
     this.estaSobreDropZone = evento;
