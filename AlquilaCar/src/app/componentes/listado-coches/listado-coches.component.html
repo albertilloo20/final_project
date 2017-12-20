@@ -33,10 +33,25 @@
             <button *ngIf="coche.alquilado == true" (click)="cambiaAlquilado(coche.id, false)" type="button" class="col-7 btn btn-danger">Dejar de alquilar</button>
             <button *ngIf="coche.alquilado == false" (click)="cambiaAlquilado(coche.id, true)" type="button" class="col-7 btn btn-success">Alquilar</button>
           </td>
-          <td><button type="button" class="btn btn-danger" (click)="borrarCoche(coche.id)">Eliminar</button></td>
-        </tr>
+          <td><button type="button" class="btn btn-danger" (click)="open(content, coche.id) ">Eliminar</button></td>
+        </tr><!--borrarCoche(coche.id)-->
         </tbody>
       </table>
     </div>
   </div>
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Borrar coche</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>¿Esta seguro que desea eliminar este coche?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="c('borrar')">Eliminar</button>
+      <button type="button" class="btn btn-primary" (click)="c('Close click')">Close</button>
+    </div>
+  </ng-template>
 </div>

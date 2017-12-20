@@ -7,6 +7,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // Rutas
 import { APP_ROUTING } from './app-routes';
 // Servicios
@@ -62,7 +63,8 @@ import { ListadoCochesComponent } from './componentes/listado-coches/listado-coc
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot()
   ],
   providers: [
     MarcasService,

@@ -26,8 +26,8 @@ export class VistaCochesComponent implements OnInit {
   alquilados_seleccionado = false;
   seleccion = '';
   coches: any[] = [''];
+  page = 1;
   constructor(public router: Router, private _marcasService: MarcasService, private _cochesService: CochesService, private _cargaImagen: CargaImagenService) {
-
   }
 
   ngOnInit() {
@@ -50,18 +50,7 @@ export class VistaCochesComponent implements OnInit {
     });
 
   }
-  moverSlider() {
-    var handle = $("#custom-handle");
-      $("#slider").slider({
-        create: function () {
-          handle.text($(this).slider("value"));
-        },
-        slide: function (event, ui) {
-          handle.text(ui.value);
-        }
-      });
 
-  }
   searchNoAlquilado(){
     if ( this.alquilados_seleccionado === true){
       this._cochesService.getCochesByAlquilado(false).subscribe(res => {

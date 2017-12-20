@@ -2,8 +2,8 @@
   <div class="mb-2 row">
     <div class="col-md-4 ">
       <div id="slider">
-        polas
-        <div id="custom-handle" class="ui-slider-handle"></div>
+        <div>Default pagination</div>
+        <ngb-pagination [collectionSize]="coches.length" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
       </div>
     </div>
     <div class="row col-md-3 form-check ">
@@ -39,8 +39,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-3" *ngFor="let coche of coches">
-      <div class="card coche hvr-shrink" >
+    <div class="col-sm-3" *ngFor="let coche of coches; let i = index">
+      <div class="card coche hvr-shrink" *ngIf="i < page * 10;">
         <img *ngIf="coche.alquilado == false" class="card-img-top  img-fluid img-coche" src="{{coche.imageurl}}" alt="Card image cap">
         <img *ngIf="coche.alquilado == true" class="card-img-top  img-fluid img-coche-alquilado" src="{{coche.imageurl}}" alt="Card image cap">
         <div *ngIf="coche.alquilado == true" style="position:absolute; top:0; left:0;"><img border="0"  src="../../../assets/alquilado.png" /></div>
