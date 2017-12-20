@@ -9,7 +9,11 @@ import { VistaDetalladaComponent } from './componentes/vista-detallada/vista-det
 import { UserChangesComponent } from './componentes/user-changes/user-changes.component';
 import { RegisterGuard } from './guards/register.guard';
 import { LoginGuard } from './guards/login.guard';
+import { UserDataGuard } from './guards/user-data.guard';
 import { ListadoCochesComponent } from './componentes/listado-coches/listado-coches.component';
+import { AdiosComponent } from './componentes/adios/adios.component';
+import { UploadCarGuard } from './guards/upload-car.guard';
+import { ListadoCochesCarGuard } from './guards/listado-coches-car.guard';
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -18,9 +22,10 @@ const APP_ROUTES: Routes = [
   { path: 'coche/:id', component: VistaDetalladaComponent },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
-  { path: 'userData', component: UserChangesComponent},
-  { path: 'uploadCar', component: SubidaCocheComponent},
-  { path: 'miscoches', component: ListadoCochesComponent},
+  { path: 'userData', component: UserChangesComponent, canActivate: [UserDataGuard]},
+  { path: 'uploadCar', component: SubidaCocheComponent, canActivate: [UploadCarGuard]},
+  { path: 'miscoches', component: ListadoCochesComponent, canActivate: [ListadoCochesCarGuard]},
+  { path: 'adios', component: AdiosComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'coches' }
 ];
 

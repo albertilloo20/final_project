@@ -24,7 +24,7 @@ export class ListadoCochesComponent implements OnInit {
     puertas: '',
     username: ''
   }*/
-  arrayCoches;
+  arrayCoches = [];
   username;
   mensajeOk = '';
   closeResult: string;
@@ -45,7 +45,6 @@ export class ListadoCochesComponent implements OnInit {
               RESULTCARS.push(RESPONSECARS[item]);
             }
             this.arrayCoches = RESULTCARS;
-            console.log(this.arrayCoches);
           }, error => {
             console.log(error);
           });
@@ -75,7 +74,6 @@ export class ListadoCochesComponent implements OnInit {
   open(content, id) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      console.log(result);
       if (result == 'borrar'){
         this.borrarCoche(id);
       }

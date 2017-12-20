@@ -1,7 +1,11 @@
+<div class="progress rounded-0" *ngIf="mostrar == true">
+  <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning " role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+</div>
 <div class="container">
   <div class="mb-2 row">
-    <div class="col-md-4 ">
+    <div class="row col-md-4 ">
       <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" class="align-self-center" (pageChange)="p = $event"></pagination-controls>
+      <span class="title_forms col-md-12 align-text-center">Se encontraron: <b>{{coches.length}}</b> coches.</span>
     </div>
     <div class="row col-md-3 form-check ">
       <label class="title_forms form-check-label align-self-start p-0">¿Desea ver los coches alquilados?</label>
@@ -35,7 +39,7 @@
       <p class="mb-0">Cambia los filtros de búsqueda para encontrar el coche que deseas alquilar. Muchas gracias y sentimos las molestias</p>
     </div>
   </div>
-  <div class="row">
+  <div class="row todo" *ngIf="mostrar == false">
     <div class="col-sm-3" *ngFor="let coche of coches | paginate: { itemsPerPage: 10, currentPage: p }">
       <div class="card coche hvr-shrink" >
         <img *ngIf="coche.alquilado == false" class="card-img-top  img-fluid img-coche" src="{{coche.imageurl}}" alt="Card image cap">

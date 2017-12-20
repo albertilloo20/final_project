@@ -1,4 +1,4 @@
-<div class="container row-grid mt-5">
+<div class="container row-grid mt-5"  *ngIf="coche != null">
 	<div class="row">
 	  <div class="col-sm-8">
       <h2 class="text-primary mb-2"><b>Detalles del coche:</b></h2>
@@ -51,4 +51,9 @@
       </div>
     </div>
 	</div>
+</div>
+<div class="container">
+  <div class="alert alert-danger mt-5" role="alert" *ngIf="coche == null">
+    <strong>El coche que buscas no existe</strong>
+  </div>
 </div>

@@ -11,8 +11,11 @@
       </button>
       <strong>{{mensajeOk}} </strong>
     </div>
+    <div class="alert alert-danger" role="alert" *ngIf="arrayCoches.length == 0">
+      Todavía no has puesto ningun coche en alquiler.<a [routerLink]="['uploadCar']" class="alert-link"> Sube tu primer coche</a> y vuelve a visitar esta pagina.
+    </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="arrayCoches.length != 0">
     <div class="col-md-12">
       <table class="table table-responsive-sm bg-warning">
         <thead class="thead-inverse">
@@ -34,7 +37,7 @@
             <button *ngIf="coche.alquilado == false" (click)="cambiaAlquilado(coche.id, true)" type="button" class="col-7 btn btn-success">Alquilar</button>
           </td>
           <td><button type="button" class="btn btn-danger" (click)="open(content, coche.id) ">Eliminar</button></td>
-        </tr><!--borrarCoche(coche.id)-->
+        </tr>
         </tbody>
       </table>
     </div>

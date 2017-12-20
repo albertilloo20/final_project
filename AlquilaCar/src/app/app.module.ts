@@ -38,6 +38,10 @@ import { RegisterGuard } from './guards/register.guard';
 import { LoginGuard } from './guards/login.guard';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import { ListadoCochesComponent } from './componentes/listado-coches/listado-coches.component';
+import { AdiosComponent } from './componentes/adios/adios.component';
+import { UserDataGuard } from './guards/user-data.guard';
+import { UploadCarGuard } from './guards/upload-car.guard';
+import { ListadoCochesCarGuard } from './guards/listado-coches-car.guard';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,8 @@ import { ListadoCochesComponent } from './componentes/listado-coches/listado-coc
     CapitalizePipe,
     PointReplacerPipe,
     NgDropFilesDirective,
-    ListadoCochesComponent
+    ListadoCochesComponent,
+    AdiosComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +82,10 @@ import { ListadoCochesComponent } from './componentes/listado-coches/listado-coc
     RegisterGuard,
     LoginGuard,
     CargaImagenService,
-    CargaCocheService
+    CargaCocheService,
+    UserDataGuard,
+    UploadCarGuard,
+    ListadoCochesCarGuard
   ],
   bootstrap: [AppComponent]
 })

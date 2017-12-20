@@ -25,7 +25,7 @@ export class VistaCochesComponent implements OnInit {
   alquilados_seleccionado = false;
   seleccion = '';
   coches: any[] = [''];
-  page = 1;
+  mostrar = true;
   constructor(public router: Router, private _marcasService: MarcasService, private _cochesService: CochesService, private _cargaImagen: CargaImagenService) {
   }
 
@@ -38,16 +38,8 @@ export class VistaCochesComponent implements OnInit {
         RESULT.push(RESPONSE[item]);
       }
       this.coches = RESULT;
+      this.mostrar = false;
     });
-    this._cochesService.getCoches().subscribe(res => {
-      const RESPONSE = res;
-      const RESULT = [];
-      for (let item in RESPONSE) {
-        RESULT.push(RESPONSE[item]);
-      }
-      this.coches = RESULT;
-    });
-
   }
 
   searchNoAlquilado(){
@@ -89,7 +81,6 @@ export class VistaCochesComponent implements OnInit {
         this.coches = RESULT;
       });
     }else {
-      this.searchNoAlquilado();
       this._cochesService.getCochesByMarca(this.seleccion).subscribe(res => {
         const RESPONSE = res;
         const RESULT = [];
@@ -118,7 +109,6 @@ export class VistaCochesComponent implements OnInit {
         this.coches = RESULT;
       });
     }else {
-      this.searchNoAlquilado();
       this._cochesService.getCochesByPuertas(this.seleccion).subscribe(res => {
         const RESPONSE = res;
         const RESULT = [];
@@ -147,7 +137,6 @@ export class VistaCochesComponent implements OnInit {
         this.coches = RESULT;
       });
     }else {
-      this.searchNoAlquilado()
       this._cochesService.getCochesByPlazas(this.seleccion).subscribe(res => {
         const RESPONSE = res;
         const RESULT = [];

@@ -38,4 +38,12 @@ export class UserService {
     let URLUsuariosActualizar = 'https://alquilacar-a9f10.firebaseio.com/usuarios/' + username + '.json';
     return this.httpClient.put( URLUsuariosActualizar, body );
   }
+
+  borrarUsuario(id){
+    const URLById = 'https://alquilacar-a9f10.firebaseio.com/usuarios/' + id + '.json';
+    return this.httpClient.delete(URLById).pipe(map((data: any) => {
+      console.log(data);
+      return data;
+    }));
+  }
 }

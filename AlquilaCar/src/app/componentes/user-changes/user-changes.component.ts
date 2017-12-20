@@ -5,6 +5,9 @@ import {ProvinciasService} from "../../services/provincias.service";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {Observable} from "rxjs/Observable";
 import {Usuario} from "../../interfaces/usuario";
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from "@angular/router";
+import {CochesService} from "../../services/coches.service";
 
 @Component({
   selector: 'app-user-changes',
@@ -34,7 +37,9 @@ export class UserChangesComponent implements OnInit {
   item;
   mensajeOk = '';
   mensajeFail = '';
-  constructor(private _provinciasService: ProvinciasService, private _userService: UserService) {
+  closeResult: string;
+  arrayCochesAeliminar;
+  constructor(private _cochesService: CochesService, public route: Router, private _provinciasService: ProvinciasService, private _userService: UserService, private modalService: NgbModal) {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this._userService.getEmail(user.email).subscribe(resp => {
@@ -69,6 +74,50 @@ export class UserChangesComponent implements OnInit {
 
   ngOnInit() {
   }
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+      if (result == 'borrar'){
+        this.borrarUsuario(this.item);
+      }
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  borrarUsuario(id) {
+    firebase.auth().currentUser.delete().then(ok => {
+      this._userService.borrarUsuario(id).subscribe(res => {
+        this._cochesService.getCochesByUser(this.usuario.username).subscribe(res => {
+          const RESPONSECARS = res;
+          const RESULTCARS = [];
+          for (let item in RESPONSECARS) {
+            RESULTCARS.push(item);
+          }
+          this.arrayCochesAeliminar = RESULTCARS;
+          this._cochesService.borrarCochesDeUsuarioEliminado(this.arrayCochesAeliminar).subscribe(ok=>{
+            this.route.navigate(['/adios']);
+          }, error => {
+            console.log(error);
+          });
+        }, error => {
+          console.log(error);
+        });
+      }, error =>{
+        this.mensajeFail = 'Ha ocurrido un error, intentelo de nuevo';
+      });
+    }).catch(err => {
+      this.mensajeFail = 'Necesitas haberte autenticado recientemente para eliminar tu usuario';
+    });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
   updateUser(){
     this.usuarioActualizar = {
       username: this.usuario.username,
@@ -81,7 +130,6 @@ export class UserChangesComponent implements OnInit {
     };
 
     firebase.auth().currentUser.updateEmail(this.usuarioActualizar.email).then(ok => {
-      console.log('bieeeeen');
       this._userService.actualizarUsuario(this.item, this.usuarioActualizar).subscribe( res => {
           this.mensajeOk = 'Los datos se han actualizado correctamente';
           this.usuario = res;
@@ -90,7 +138,6 @@ export class UserChangesComponent implements OnInit {
         }
       );
     }).catch(err => {
-      console.log('noooo');
       this.mensajeFail = 'Necesitas haberte autenticado recientemente para cambiar el email';
     });
   }

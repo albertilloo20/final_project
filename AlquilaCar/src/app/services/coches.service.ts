@@ -64,4 +64,13 @@ export class CochesService {
       return data;
     }));
   }
+  borrarCochesDeUsuarioEliminado(cochesAeliminar){
+    for (let i = 0; i < cochesAeliminar.length; i++) {
+      const URLById = 'https://alquilacar-a9f10.firebaseio.com/coches/' + cochesAeliminar[i] + '.json';
+      return this.httpClient.delete(URLById).pipe(map((data: any) => {
+        console.log(data);
+        return data;
+      }));
+    }
+  }
 }
