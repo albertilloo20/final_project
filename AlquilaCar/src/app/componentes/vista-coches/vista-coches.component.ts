@@ -8,8 +8,7 @@ import { NgForm } from '@angular/forms';
 import { Observable} from "rxjs/Observable";
 import { CargaImagenService } from "../../services/carga-imagen.service";
 import {Router} from "@angular/router";
-declare var jQuery:any;
-declare var $:any;
+import {PaginatePipe, PaginationControlsComponent, PaginationService} from 'ng2-pagination';
 @Component({
   selector: 'app-vista-coches',
   templateUrl: './vista-coches.component.html',

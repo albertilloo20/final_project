@@ -30,6 +30,7 @@
     "firebase-admin": "^5.5.1",
     "handlebars": "^4.0.11",
     "jquery": "^3.2.1",
+    "ng2-pagination": "^2.0.2",
     "npm": "^5.5.1",
     "open-iconic": "^1.1.1",
     "popper.js": "^1.13.0",

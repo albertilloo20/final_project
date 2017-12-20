@@ -77,3 +77,17 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+:host /deep/ pagination-controls .current {
+  background: #0275D8;
+}
+:host /deep/ pagination-controls .ng2-pagination {
+  cursor:pointer;
+  padding: 0;
+}
+:host /deep/ pagination-controls .ng2-pagination a, .ng2-pagination button {
+   color: #E0A800;
+ }
+:host /deep/ pagination-controls .ng2-pagination a:hover, .ng2-pagination button:hover{
+  color: white;
+  background-color: #0275D8;
+}

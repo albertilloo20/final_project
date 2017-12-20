@@ -8,6 +8,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {Ng2PaginationModule} from "ng2-pagination";
 // Rutas
 import { APP_ROUTING } from './app-routes';
 // Servicios
@@ -64,7 +65,8 @@ import { ListadoCochesComponent } from './componentes/listado-coches/listado-coc
     AngularFireAuthModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    Ng2PaginationModule
   ],
   providers: [
     MarcasService,
